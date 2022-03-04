@@ -1,0 +1,14 @@
+.Header {
+  border-bottom: 1px solid fuchsia;
+}
+
+.Header.light {
+  background-color: #ffffff;
+}
+.Header.dark {
+  background-color: #252526;
+  color: white;
+}
+.Header.dark a {
+  color: white;
+}
