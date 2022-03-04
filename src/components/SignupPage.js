@@ -2,21 +2,22 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import "./SignupPage.css";
 
 function SignupPage(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const userDetails = { username, password };
+    const userDetails = { username, password, email };
 
     axios
       .post(`${process.env.REACT_APP_URL}/auth/signup`, userDetails)
@@ -47,6 +48,17 @@ function SignupPage(props) {
             name="username"
             value={username}
             onChange={handleUsername}
+          />
+        </label>
+
+        <label>
+          Email:
+          <input
+            type="email"
+            required={true}
+            name="email"
+            value={email}
+            onChange={handleEmail}
           />
         </label>
 

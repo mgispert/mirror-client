@@ -9,6 +9,7 @@ export default function EditUserProfile() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +21,7 @@ export default function EditUserProfile() {
     if (user) {
       setUsername(user.username);
       setPassword(user.password);
+      setEmail(user.email);
     }
   }, [user]);
 
@@ -28,6 +30,7 @@ export default function EditUserProfile() {
     editProfile({
       username,
       password,
+      email,
     });
   };
 
@@ -70,9 +73,21 @@ export default function EditUserProfile() {
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
-                type="text"
+                type="username"
                 name="username"
                 placeholder="Write the username here"
+              />
+            </label>
+            <label className="label">
+              <p>Email: </p>
+              <input
+                defaultValue={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                type="email"
+                name="email"
+                placeholder="Write the email here"
               />
             </label>
             <label>
