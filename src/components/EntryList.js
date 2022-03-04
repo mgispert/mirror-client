@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useGetEntryList } from "../hooks/useGetEntryList";
 
-export default function EntryList(props) {
+export default function EntryList() {
   const { entries } = useGetEntryList();
   return (
     <div>

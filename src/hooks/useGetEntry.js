@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export const useGetEntry = () => {
-  const [entry, setEntry] = useState("");
+  const [entry, setEntry] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +27,7 @@ export const useGetEntry = () => {
         setLoading(false);
         setError(true);
       });
-  }, [getToken, entryId]);
+  }, [getToken, entryId, storedToken]);
 
   const deleteEntry = () => {
     axios

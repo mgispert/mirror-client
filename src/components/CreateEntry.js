@@ -76,7 +76,7 @@ export default function CreateEntry() {
           />
         </label>
         <label>
-          <p>Name at lease one thing you're grateful for:</p>
+          <p>Name at least one thing you're grateful for:</p>
 
           <input
             value={grateful}

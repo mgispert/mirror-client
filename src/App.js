@@ -12,6 +12,8 @@ import EntryList from "./components/EntryList";
 import EntryDetails from "./components/EntryDetails";
 import CreateEntry from "./components/CreateEntry";
 import EditEntry from "./components/EditEntry";
+import UserProfile from "./components/UserProfile";
+import EditUserProfile from "./components/EditUserProfile";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -55,6 +57,22 @@ function App() {
           }
         />
         <Route
+          path="/user/:userId"
+          element={
+            <IsPrivate>
+              <UserProfile />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/user/:userId/edit"
+          element={
+            <IsPrivate>
+              <EditUserProfile />
+            </IsPrivate>
+          }
+        />
+        <Route
           path="/signup"
           element={
             <IsAnon>
@@ -62,6 +80,7 @@ function App() {
             </IsAnon>
           }
         />
+
         <Route
           path="/login"
           element={
