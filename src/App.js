@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 import EntryList from "./components/EntryList";
 import EntryDetails from "./components/EntryDetails";
 import CreateEntry from "./components/CreateEntry";
+import EditEntry from "./components/EditEntry";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -42,6 +43,14 @@ function App() {
           element={
             <IsPrivate>
               <CreateEntry />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/entry/:entryId/edit"
+          element={
+            <IsPrivate>
+              <EditEntry />
             </IsPrivate>
           }
         />

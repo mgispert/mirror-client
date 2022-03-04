@@ -16,7 +16,6 @@ function SignupPage(props) {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-
     const userDetails = { username, password };
 
     axios

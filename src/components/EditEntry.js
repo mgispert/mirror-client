@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { useCreateEntry } from "../hooks/useCreateEntry";
+import { useEditEntry } from "../hooks/useEditEntry";
+import { useGetEntry } from "../hooks/useGetEntry";
 
-export default function CreateEntry() {
-  const [date, setDate] = useState("");
-  const [title, setTitle] = useState("");
-  const [grade, setGrade] = useState(0);
-  const [grateful, setGrateful] = useState("");
-  const [emotion, setEmotion] = useState("");
-  const [person, setPerson] = useState("");
-  const [improvement, setImprovement] = useState("");
-  const [free, setFree] = useState("");
-  const { error, loading, addNewEntry } = useCreateEntry();
+export default function EditEntry() {
+  const { entry } = useGetEntry();
+
+  const [date, setDate] = useState(entry.date);
+  const [title, setTitle] = useState(entry.title);
+  const [grade, setGrade] = useState(entry.grade);
+  const [grateful, setGrateful] = useState(entry.grateful);
+  const [emotion, setEmotion] = useState(entry.emotion);
+  const [person, setPerson] = useState(entry.person);
+  const [improvement, setImprovement] = useState(entry.improvement);
+  const [free, setFree] = useState(entry.free);
+
+  const { error, loading, editEntry } = useEditEntry();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNewEntry({
+    editEntry({
       date,
       title,
       grade,
@@ -30,14 +34,14 @@ export default function CreateEntry() {
     <div>
       {error ? (
         <div>
-          <h3>Error creating new entry, please fill in all the forms</h3>
+          <h3>Error updating your entry, please fill in all the forms</h3>
         </div>
       ) : loading ? (
         <span>Loading...</span>
       ) : null}
       <form onSubmit={handleSubmit} className="form">
         <label className="label">
-          <p>Date:</p>
+          <p>Date: </p>
           <input
             value={date}
             onChange={(e) => {
@@ -45,7 +49,7 @@ export default function CreateEntry() {
             }}
             type="text"
             name="date"
-            className="input"
+            placeholder="Write the date here"
           />
         </label>
         <label>
@@ -118,6 +122,7 @@ export default function CreateEntry() {
             }}
             type="text"
             name="person"
+            placeholder="This person helped me today"
           />
         </label>
         <label>
@@ -130,6 +135,7 @@ export default function CreateEntry() {
             }}
             type="text"
             name="improvement"
+            placeholder="Next time I'll try..."
           />
         </label>
         <label>
@@ -142,6 +148,7 @@ export default function CreateEntry() {
             }}
             type="text"
             name="free"
+            placeholder="I have more things to say..."
           ></textarea>
         </label>
         <button type="submit">Let it go</button>
