@@ -22,18 +22,18 @@ import { NavLink } from "react-router-dom";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const { error, loading, signup } = useSignup();
 
-  const handleFullName = (e) => setFullName(e.target.value);
+  const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const userDetails = { username: fullName, password, email };
+    const userDetails = { username, password, email };
     signup(userDetails);
   };
 
@@ -69,8 +69,8 @@ export default function Signup() {
         >
           <Stack spacing={4}>
             <FormControl id="fullName" isRequired>
-              <FormLabel>Full Name</FormLabel>
-              <Input type="text" value={fullName} onChange={handleFullName} />
+              <FormLabel>Username</FormLabel>
+              <Input type="text" value={username} onChange={handleUsername} />
             </FormControl>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>

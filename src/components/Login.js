@@ -1,77 +1,121 @@
-import { useContext, useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Stack,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+  Link,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const navigate = useNavigate();
-
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const { error, loading, login } = useLogin();
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
     const userDetails = {
       username,
       password,
     };
-
-    axios
-      .post(`${process.env.REACT_APP_URL}/auth/login`, userDetails)
-      .then((response) => {
-        storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/");
-      })
-      .catch((error) => {
-        const msg = error.response.data.errorMessage;
-        console.log("error loggin in...", msg);
-        setErrorMessage(msg);
-      });
+    login(userDetails);
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      {errorMessage && <p className="error">{errorMessage}</p>}
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            required={true}
-            name="username"
-            value={username}
-            onChange={handleUsername}
-          />
-        </label>
-
-        <label>
-          Password:
-          <input
-            type="password"
-            required={true}
-            name="password"
-            value={password}
-            onChange={handlePassword}
-          />
-        </label>
-
-        <button type="submit">Login</button>
-      </form>
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
+    <Flex
+      align={"center"}
+      justify={"center"}
+      bg={useColorModeValue("gray.50", "gray.800")}
+    >
+      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        <Stack align={"center"}>
+          <Heading fontSize={"4xl"} textAlign={"center"}>
+            Log In
+          </Heading>
+          <Text fontSize={"lg"} color={"gray.600"}>
+            Welcome to your own reflection! 📜
+          </Text>
+        </Stack>
+        {error && (
+          <Alert status="error">
+            <AlertIcon />
+            There was an error processing your request
+          </Alert>
+        )}
+        <Box
+          width="100%"
+          minWidth={{ sm: "100%", md: "400px" }}
+          rounded={"lg"}
+          bg={useColorModeValue("white", "gray.700")}
+          boxShadow={"lg"}
+          p={8}
+          as={"form"}
+        >
+          <Stack spacing={4}>
+            <FormControl id="fullName" isRequired>
+              <FormLabel>Full Name</FormLabel>
+              <Input type="text" value={username} onChange={handleUsername} />
+            </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={handlePassword}
+                />
+                <InputRightElement h={"full"}>
+                  <Button
+                    variant={"ghost"}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Stack spacing={10} pt={2}>
+              <Button
+                loadingText="Submitting"
+                isLoading={loading}
+                size="lg"
+                colorScheme={"purple"}
+                onClick={handleLoginSubmit}
+              >
+                Log In
+              </Button>
+            </Stack>
+            <Stack pt={6}>
+              <Text align={"center"}>
+                Don't have an account yet?{" "}
+                <Link colorScheme={"purple"} as={NavLink} to="/signup">
+                  Register
+                </Link>
+              </Text>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
   );
 }
 

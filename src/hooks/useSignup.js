@@ -12,10 +12,12 @@ export const useSignup = () => {
     axios
       .post(`${process.env.REACT_APP_URL}/auth/signup`, userDetails)
       .then(() => {
+        setLoading(false);
         navigate("/login");
       })
       .catch(() => {
         setError(true);
+        setLoading(false);
       });
   };
 
