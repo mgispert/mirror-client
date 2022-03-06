@@ -19,7 +19,7 @@ export const useCreateEntry = () => {
       })
       .then(() => {
         setLoading(false);
-        navigate("/entry");
+        navigate("/entries");
       })
       .catch(() => {
         setLoading(false);
