@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import SignupPage from "./components/SignupPage";
-import LoginPage from "./components/LoginPage";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 import HomePage from "./components/HomePage";
@@ -71,7 +71,7 @@ function App() {
           path="/signup"
           element={
             <IsAnon>
-              <SignupPage />
+              <Signup />
             </IsAnon>
           }
         />
@@ -80,7 +80,7 @@ function App() {
           path="/login"
           element={
             <IsAnon>
-              <LoginPage />
+              <Login />
             </IsAnon>
           }
         />
