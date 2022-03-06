@@ -31,6 +31,25 @@ const mirrorTheme = extendTheme({
         variants: "outline",
       },
     },
+    Button: {
+      variants: {
+        solid: {
+          _focus: {
+            borderColor: "purple.300",
+            boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
+          },
+        },
+        outline: {
+          _focus: {
+            borderColor: "purple.300",
+            boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
+          },
+        },
+      },
+      defaultProps: {
+        variants: "outline",
+      },
+    },
   },
 });
 

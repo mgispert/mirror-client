@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useCreateEntry } from "../hooks/useCreateEntry";
+import { Checkbox, CheckboxGroup, Stack } from "@chakra-ui/react";
 
 export default function CreateEntry() {
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(0);
   const [grateful, setGrateful] = useState("");
-  const [emotion, setEmotion] = useState("");
+  const [emotion, setEmotion] = useState([]);
   const [person, setPerson] = useState("");
   const [improvement, setImprovement] = useState("");
   const [free, setFree] = useState("");
@@ -90,23 +91,23 @@ export default function CreateEntry() {
         </label>
         <label>
           <p>Which emotion do you identify with today?:</p>
-          <select
-            value={emotion}
-            onChange={(e) => {
-              setEmotion(e.target.value);
+          <CheckboxGroup
+            colorScheme="purple"
+            onChange={(value) => {
+              setEmotion(value);
             }}
-            type="text"
-            name="emotion"
           >
-            <option value="happy">Happiness</option>
-            <option value="sad">Sadness</option>
-            <option value="nothing">Apathy</option>
-            <option value="tired">Exhaustion</option>
-            <option value="proud">Pride</option>
-            <option value="excited">Excitement</option>
-            <option value="anxious">Anxiety</option>
-            <option value="angry">Anger</option>
-          </select>
+            <Stack spacing={[1, 5]} direction={["column", "row"]}>
+              <Checkbox value="happiness">Happiness</Checkbox>
+              <Checkbox value="saddness">Sadness</Checkbox>
+              <Checkbox value="apathy">Apathy</Checkbox>
+              <Checkbox value="exhaustion">Exhaustion</Checkbox>
+              <Checkbox value="pride">Pride</Checkbox>
+              <Checkbox value="excitement">Excitement</Checkbox>
+              <Checkbox value="anxiety">Anxiety</Checkbox>
+              <Checkbox value="anger">Anger</Checkbox>
+            </Stack>
+          </CheckboxGroup>
         </label>
         <label>
           <p>Name at least one person who helped make your day better: </p>

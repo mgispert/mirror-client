@@ -40,7 +40,7 @@ const BlogTags = (props) => {
   );
 };
 
-const EntryItem = ({ title, emotion, date, free, id }) => {
+const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
   return (
     <Flex display="flex" flex="1" alignItems="center" gap={"30px"}>
       <Flex position={"relative"}>
@@ -54,9 +54,7 @@ const EntryItem = ({ title, emotion, date, free, id }) => {
         >
           <Image
             borderRadius="lg"
-            src={
-              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-            }
+            src={imageURL}
             alt="some good alt text"
             objectFit="contain"
             maxWidth={"300px"}
@@ -101,7 +99,7 @@ const EntryItem = ({ title, emotion, date, free, id }) => {
         >
           {shortenString(free, 100)}
         </Text>
-        <BlogTags tags={[emotion]} />
+        <BlogTags tags={emotion} />
       </Box>
     </Flex>
   );
@@ -184,6 +182,7 @@ export default function EntryList() {
                     emotion={entry.emotion}
                     free={entry.free}
                     id={entry._id}
+                    imageURL={entry.imageURL}
                   />
                   <Divider />
                 </Fragment>

@@ -20,7 +20,7 @@ export const useEditEntry = () => {
       })
       .then(() => {
         setLoading(false);
-        navigate(`/entry/${entryId}`);
+        navigate(`/entries/${entryId}`);
       })
       .catch(() => {
         setLoading(false);
