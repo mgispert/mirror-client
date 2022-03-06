@@ -1,6 +1,3 @@
-import "./App.css";
-import { ThemeContext } from "./context/theme.context";
-import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import SignupPage from "./components/SignupPage";
@@ -16,16 +13,14 @@ import UserProfile from "./components/UserProfile";
 import EditUserProfile from "./components/EditUserProfile";
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <div className={`App ${theme}`}>
+    <div>
       <Header />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/entry"
+          path="/entries"
           element={
             <IsPrivate>
               <EntryList />
@@ -33,7 +28,7 @@ function App() {
           }
         />
         <Route
-          path="/entry/:entryId"
+          path="/entries/:entryId"
           element={
             <IsPrivate>
               <EntryDetails />
@@ -41,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/entry/create"
+          path="/entries/create"
           element={
             <IsPrivate>
               <CreateEntry />
@@ -49,7 +44,7 @@ function App() {
           }
         />
         <Route
-          path="/entry/:entryId/edit"
+          path="/entries/:entryId/edit"
           element={
             <IsPrivate>
               <EditEntry />

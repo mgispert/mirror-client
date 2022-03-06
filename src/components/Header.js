@@ -1,45 +1,107 @@
 import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { ThemeContext } from "../context/theme.context";
-import "./Header.css";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuDivider,
+  Avatar,
+} from "@chakra-ui/react";
+import { AddIcon, CalendarIcon } from "@chakra-ui/icons";
 
 export default function Header() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
-
-  const { userId } = useParams();
+  const navigate = useNavigate();
 
   return (
-    <section>
-      <div className={`Header ${theme}`}>
-        <div>
-          <img src="/images/pngwing.com.png" alt="logo" height={100} />
-        </div>
-        <div>
+    <Container
+      maxW="container.xl"
+      borderBottom={1}
+      borderStyle={"solid"}
+      borderColor={"gray.200"}
+    >
+      <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
+        <Box>
+          <NavLink to="/">
+            <Image src="/images/pngwing.com.png" maxWidth={"50px"} />
+          </NavLink>
+        </Box>
+
+        <Flex gap={"20px"} alignItems="center">
           {isLoggedIn && !isLoading && (
             <>
-              <NavLink to="/"> Home </NavLink> |
-              <NavLink to="/entry"> My Entries </NavLink> |
-              <NavLink to="/entry/create"> New Entry </NavLink> |
-              <NavLink to={`/user/${user?._id}`}> My Mirror </NavLink> |
-              <button onClick={logOutUser}> Logout </button>
+              <Button
+                variant={"outline"}
+                colorScheme="purple"
+                size={"sm"}
+                leftIcon={<CalendarIcon />}
+                onClick={() => {
+                  navigate("/entries");
+                }}
+              >
+                Entries
+              </Button>
+
+              <Button
+                variant={"solid"}
+                colorScheme={"purple"}
+                size={"sm"}
+                leftIcon={<AddIcon />}
+                onClick={() => {
+                  navigate("/entries/create");
+                }}
+              >
+                Entry
+              </Button>
+
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant="link"
+                  cursor={"pointer"}
+                  minW={0}
+                  _hover={{ textDecoration: "none" }}
+                >
+                  <Avatar size={"sm"} name={user?.username} />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    _hover={{ textDecoration: "none" }}
+                    as={NavLink}
+                    to={`/user/${user?._id}`}
+                  >
+                    My Mirror
+                  </MenuItem>
+
+                  <MenuDivider />
+                  <MenuItem justifyContent="start" onClick={logOutUser}>
+                    Log Out
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </>
           )}
-          {!isLoggedIn && (
+          {!isLoggedIn && !isLoading && (
             <>
-              <NavLink to="/signup"> Register </NavLink> |
-              <NavLink to="/login"> Login </NavLink>
+              <Button variant={"outline"} colorScheme="purple">
+                <NavLink to="/login"> Login </NavLink>
+              </Button>
+              <Button colorScheme="purple">
+                <NavLink to="/signup"> Register </NavLink>
+              </Button>
             </>
           )}
-        </div>
-        <div>
-          <button onClick={toggleTheme}>
-            {theme === "dark" ? <span>Light ☀️</span> : <span>Dark 🌒</span>}
-          </button>
-        </div>
-      </div>
-    </section>
+        </Flex>
+      </Flex>
+    </Container>
   );
 }

@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProviderWrapper } from "./context/auth.context";
-import { ThemeProviderWrapper } from "./context/theme.context";
+import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProviderWrapper>
-        <ThemeProviderWrapper>
+        <ChakraProvider>
           <App />
-        </ThemeProviderWrapper>
+        </ChakraProvider>
       </AuthProviderWrapper>
     </BrowserRouter>
   </React.StrictMode>,
