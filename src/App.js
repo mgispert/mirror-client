@@ -11,6 +11,7 @@ import CreateEntry from "./components/CreateEntry";
 import EditEntry from "./components/EditEntry";
 import UserProfile from "./components/UserProfile";
 import EditUserProfile from "./components/EditUserProfile";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -85,6 +86,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
