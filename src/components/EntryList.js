@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useGetEntryList } from "../hooks/useGetEntryList";
 import {
@@ -14,6 +14,7 @@ import {
   Container,
   Flex,
   Button,
+  Input,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import Loading from "./Loading";
@@ -108,6 +109,25 @@ const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
 
 export default function EntryList() {
   const { entries, loading, error } = useGetEntryList();
+  const [filteredEntries, setFilteredEntries] = useState(entries);
+  const [filterEnabled, setFilterEnabled] = useState(false);
+
+  const filterByTitle = (e) => {
+    const hasValue = !!e.target.value;
+    if (hasValue) {
+      setFilterEnabled(true);
+      setFilteredEntries(
+        entries.filter((entry) =>
+          entry.title.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+      );
+    } else {
+      setFilterEnabled(false);
+      setFilteredEntries(entries);
+    }
+  };
+
+  const isFilterEnabled = filterEnabled ? filteredEntries : entries;
   return (
     <Container maxW={"7xl"} p="12">
       {loading ? (
@@ -119,6 +139,16 @@ export default function EntryList() {
           <Heading as="h1" textAlign={"center"}>
             Remember what you felt
           </Heading>
+          <br />
+          <Input
+            backgroundColor={"white"}
+            placeholder={"Look for your memories' titles here..."}
+            display={"flex"}
+            width={"30%"}
+            margin={"0 auto"}
+            onChange={filterByTitle}
+          />
+          <br />
           <Box
             marginTop={{ base: "1", sm: "5" }}
             display="flex"
@@ -126,7 +156,7 @@ export default function EntryList() {
             justifyContent="space-between"
             gap="30px"
           >
-            {entries.map((entry, index) => {
+            {isFilterEnabled.map((entry, index) => {
               return (
                 <Fragment key={index}>
                   <EntryItem
