@@ -69,8 +69,8 @@ export default function EntryDetails() {
                 src={entry.imageURL}
                 fit={"cover"}
                 align={"center"}
-                w={"100%"}
-                h={"auto"}
+                mw={"100%"}
+                mh={"auto"}
               />
 
               <Stack
@@ -85,15 +85,17 @@ export default function EntryDetails() {
                     My grade for the day:
                   </Text>
                   <Slider
-                    aria-label="slider-ex-2"
-                    colorScheme="purple"
-                    defaultValue={entry.grade}
-                    isDisabled={true}
+                    value={entry.grade}
+                    min={0}
+                    max={10}
+                    step={1}
+                    isDisabled
                   >
-                    <SliderTrack>
-                      <SliderFilledTrack value={entry.grade} />
+                    <SliderTrack bg="purple.100">
+                      <Box position="relative" right={10} />
+                      <SliderFilledTrack bg="purple.500" />
                     </SliderTrack>
-                    <SliderThumb />
+                    <SliderThumb boxSize={6} bg="purple.300" />
                   </Slider>
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     I'm grateful for: &nbsp; <strong>{entry.grateful}</strong>
