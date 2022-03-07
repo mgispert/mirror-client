@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Testimonials from "./Testimonials";
 
 import {
   Box,
@@ -81,6 +82,8 @@ export default function HomePage() {
           </Stack>
         </Stack>
       </Container>
+
+      <Testimonials />
     </>
   );
 }

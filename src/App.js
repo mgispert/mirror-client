@@ -10,12 +10,12 @@ import EntryDetails from "./components/EntryDetails";
 import CreateEntry from "./components/CreateEntry";
 import EditEntry from "./components/EditEntry";
 import UserProfile from "./components/UserProfile";
-import EditUserProfile from "./components/EditUserProfile";
 import Footer from "./components/Footer";
+import Stats from "./components/Stats";
 
 function App() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#F0ECE3" }}>
       <Header />
 
       <Routes>
@@ -61,13 +61,14 @@ function App() {
           }
         />
         <Route
-          path="/user/:userId/edit"
+          path="/stats"
           element={
             <IsPrivate>
-              <EditUserProfile />
+              <Stats />
             </IsPrivate>
           }
         />
+
         <Route
           path="/signup"
           element={

@@ -39,11 +39,7 @@ function Login(props) {
   };
 
   return (
-    <Flex
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
+    <Flex align={"center"} justify={"center"} bg={"#F0ECE3"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
@@ -70,7 +66,7 @@ function Login(props) {
         >
           <Stack spacing={4}>
             <FormControl id="fullName" isRequired>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel>Username</FormLabel>
               <Input type="text" value={username} onChange={handleUsername} />
             </FormControl>
             <FormControl id="password" isRequired>

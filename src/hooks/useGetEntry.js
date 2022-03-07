@@ -35,7 +35,7 @@ export const useGetEntry = () => {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
-        navigate("/entry");
+        navigate("/entries");
       });
   };
 

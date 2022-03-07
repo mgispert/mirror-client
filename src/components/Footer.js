@@ -7,10 +7,16 @@ export default function Footer() {
       maxW="container.xl"
       borderTop={1}
       borderStyle={"solid"}
-      borderColor={"gray.200"}
+      borderColor={"purple.100"}
       mt={"100px"}
     >
-      <Text pt={6} fontSize={"sm"} textAlign={"center"}>
+      <Text
+        pt={6}
+        fontSize={"sm"}
+        textAlign={"center"}
+        padding={"15px"}
+        position={"sticky"}
+      >
         © 2022 MGispert. &nbsp; All rights reserved
       </Text>
     </Container>

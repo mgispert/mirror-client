@@ -35,7 +35,7 @@ const mirrorTheme = extendTheme({
       variants: {
         solid: {
           _focus: {
-            borderColor: "purple.300",
+            borderColor: "#A68DAD",
             boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
           },
         },
