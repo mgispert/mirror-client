@@ -75,7 +75,7 @@ export default function EditUserProfile() {
       ) : loading ? (
         <Loading />
       ) : user ? (
-        <Flex align={"center"} justify={"center"} bg={"#F0ECE3"}>
+        <Flex align={"center"} justify={"center"} bg={"#e5d6ce"}>
           <Stack
             spacing={8}
             mx={"auto"}

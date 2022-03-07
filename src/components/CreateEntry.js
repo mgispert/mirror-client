@@ -48,11 +48,7 @@ export default function CreateEntry() {
     });
   };
   return (
-    <Flex
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-    >
+    <Flex align={"center"} justify={"center"} bg={"#e5d6ce"}>
       {error ? <Error /> : loading ? <Loading /> : null}
       <Stack
         spacing={8}
