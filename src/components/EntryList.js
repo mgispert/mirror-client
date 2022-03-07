@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useGetEntryList } from "../hooks/useGetEntryList";
 import {
@@ -15,6 +15,9 @@ import {
   Flex,
   Button,
   Input,
+  CheckboxGroup,
+  Checkbox,
+  Stack,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import Loading from "./Loading";
@@ -110,24 +113,31 @@ const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
 export default function EntryList() {
   const { entries, loading, error } = useGetEntryList();
   const [filteredEntries, setFilteredEntries] = useState(entries);
-  const [filterEnabled, setFilterEnabled] = useState(false);
+  const [filterByTitle, setFilterByTitle] = useState(undefined);
 
-  const filterByTitle = (e) => {
+  useEffect(() => {
+    if (filterByTitle) {
+      setFilteredEntries(
+        entries.filter((entry) => {
+          return entry.title
+            ?.toLowerCase()
+            .includes(filterByTitle?.toLowerCase());
+        })
+      );
+    }
+  }, [filterByTitle]);
+
+  const handleFilterByTitle = (e) => {
     const hasValue = !!e.target.value;
     if (hasValue) {
-      setFilterEnabled(true);
-      setFilteredEntries(
-        entries.filter((entry) =>
-          entry.title.toLowerCase().includes(e.target.value.toLowerCase())
-        )
-      );
+      setFilterByTitle(e.target.value);
     } else {
-      setFilterEnabled(false);
-      setFilteredEntries(entries);
+      setFilterByTitle(undefined);
     }
   };
 
-  const isFilterEnabled = filterEnabled ? filteredEntries : entries;
+  const isFilterEnabled = filterByTitle ? filteredEntries : entries;
+  console.log("isFilterEnabled", isFilterEnabled);
   return (
     <Container maxW={"7xl"} p="12">
       {loading ? (
@@ -140,13 +150,14 @@ export default function EntryList() {
             Remember what you felt
           </Heading>
           <br />
+
           <Input
             backgroundColor={"white"}
             placeholder={"Look for your memories' titles here..."}
             display={"flex"}
             width={"30%"}
             margin={"0 auto"}
-            onChange={filterByTitle}
+            onChange={handleFilterByTitle}
           />
           <br />
           <Box

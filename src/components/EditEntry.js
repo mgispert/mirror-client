@@ -169,7 +169,7 @@ export default function EditEntry() {
               >
                 <Stack spacing={[1, 5]} direction={["column"]}>
                   <Checkbox value="happiness">Happiness</Checkbox>
-                  <Checkbox value="saddness">Sadness</Checkbox>
+                  <Checkbox value="sadness">Sadness</Checkbox>
                   <Checkbox value="apathy">Apathy</Checkbox>
                   <Checkbox value="exhaustion">Exhaustion</Checkbox>
                   <Checkbox value="pride">Pride</Checkbox>

@@ -162,18 +162,6 @@ export default function EditUserProfile() {
                     Edit &nbsp;{" "}
                     <EditIcon boxSize={"20px"} color={"purple.500"} />
                   </Button>
-                  <Button
-                    isLoading={loading}
-                    loadingText="Redirecting"
-                    colorScheme={"purple"}
-                    px={6}
-                    onClick={() => {
-                      navigate("/stats");
-                    }}
-                    size="lg"
-                  >
-                    My evolution
-                  </Button>
                 </Stack>
               </Stack>
             </Box>

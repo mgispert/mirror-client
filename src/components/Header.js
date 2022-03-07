@@ -14,8 +14,11 @@ import {
   MenuList,
   MenuDivider,
   Avatar,
+  Icon,
 } from "@chakra-ui/react";
-import { AddIcon, CalendarIcon } from "@chakra-ui/icons";
+
+import { GoGraph, GoListUnordered } from "react-icons/go";
+import { AddIcon } from "@chakra-ui/icons";
 
 export default function Header() {
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
@@ -42,7 +45,18 @@ export default function Header() {
                 variant={"outline"}
                 colorScheme="purple"
                 size={"sm"}
-                leftIcon={<CalendarIcon />}
+                leftIcon={<Icon as={GoGraph} />}
+                onClick={() => {
+                  navigate("/stats");
+                }}
+              >
+                Evolution
+              </Button>
+              <Button
+                variant={"outline"}
+                colorScheme="purple"
+                size={"sm"}
+                leftIcon={<Icon as={GoListUnordered} />}
                 onClick={() => {
                   navigate("/entries");
                 }}
