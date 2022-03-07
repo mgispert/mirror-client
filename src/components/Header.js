@@ -26,7 +26,7 @@ export default function Header() {
       maxW="container.xl"
       borderBottom={1}
       borderStyle={"solid"}
-      borderColor={"purple.100"}
+      borderColor={"purple.200"}
     >
       <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
         <Box>

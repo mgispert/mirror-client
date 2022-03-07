@@ -15,7 +15,7 @@ import Stats from "./components/Stats";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#F0ECE3" }}>
+    <div style={{ backgroundColor: "#e5d6ce" }}>
       <Header />
 
       <Routes>

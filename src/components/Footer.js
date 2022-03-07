@@ -7,7 +7,7 @@ export default function Footer() {
       maxW="container.xl"
       borderTop={1}
       borderStyle={"solid"}
-      borderColor={"purple.100"}
+      borderColor={"purple.200"}
       mt={"100px"}
     >
       <Text
