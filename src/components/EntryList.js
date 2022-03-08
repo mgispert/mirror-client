@@ -15,9 +15,6 @@ import {
   Flex,
   Button,
   Input,
-  CheckboxGroup,
-  Checkbox,
-  Stack,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import Loading from "./Loading";
@@ -216,7 +213,7 @@ export default function EntryList() {
           <Button
             variant={"solid"}
             size={"lg"}
-            colorScheme={"#9f7aea"}
+            colorScheme={"purple"}
             as={NavLink}
             to="/entries/create"
           >

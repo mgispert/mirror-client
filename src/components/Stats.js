@@ -1,16 +1,6 @@
 import React, { useEffect } from "react";
 import { useGetEntryList } from "../hooks/useGetEntryList";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  Flex,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import {
   Chart,
   ArcElement,

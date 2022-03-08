@@ -16,7 +16,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/react";
-import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 import { useGetEntry } from "../hooks/useGetEntry";
 import { useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ import Loading from "./Loading";
 import Alert from "./Alert";
 
 export default function EntryDetails() {
-  const { entry, error, loading, deleteEntry } = useGetEntry();
+  const { entry, error, loading } = useGetEntry();
   const { entryId } = useParams();
 
   return (
@@ -160,14 +160,6 @@ export default function EntryDetails() {
                 Edit &nbsp; <EditIcon boxSize={"20px"} color={"purple.400"} />
               </Button>
               <Alert />
-              {/* <Button
-                variant={"solid"}
-                size={"lg"}
-                colorScheme={"#9f7aea"}
-                onClick={() => deleteEntry(entry.id)}
-              >
-                Delete &nbsp; <DeleteIcon boxSize={"20px"} color={"white"} />
-              </Button> */}
             </Stack>
           </SimpleGrid>
         </>
