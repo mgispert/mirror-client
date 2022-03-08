@@ -34,7 +34,7 @@ export default function Header() {
       <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
         <Box>
           <NavLink to="/">
-            <Image src="/images/pngwing.com.png" maxWidth={"50px"} />
+            <Image src="/images/mirror.png" maxWidth={"50px"} />
           </NavLink>
         </Box>
 
