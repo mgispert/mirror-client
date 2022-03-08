@@ -134,7 +134,7 @@ export default function EntryList() {
   };
 
   const isFilterEnabled = filterByTitle ? filteredEntries : entries;
-  console.log("isFilterEnabled", isFilterEnabled);
+
   return (
     <Container maxW={"7xl"} p="12">
       {loading ? (

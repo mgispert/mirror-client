@@ -161,7 +161,7 @@ const GradesChart = ({ entries }) => {
       labels: Object.keys(gradesData),
       datasets: [
         {
-          label: "Emotions",
+          label: "Grades",
           data: Object.values(gradesData),
           backgroundColor: [
             "green",
