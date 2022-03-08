@@ -44,7 +44,13 @@ const BlogTags = (props) => {
 
 const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
   return (
-    <Flex display="flex" flex="1" alignItems="center" gap={"30px"}>
+    <Flex
+      display="flex"
+      flex="1"
+      alignItems="center"
+      gap={"30px"}
+      flexDirection={{ base: "column", md: "row" }}
+    >
       <Flex position={"relative"}>
         <Link
           to={`/entries/${id}`}
@@ -152,7 +158,7 @@ export default function EntryList() {
             backgroundColor={"white"}
             placeholder={"Look for your memories' titles here..."}
             display={"flex"}
-            width={"30%"}
+            width={"100%"}
             margin={"0 auto"}
             onChange={handleFilterByTitle}
           />

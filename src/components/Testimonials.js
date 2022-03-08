@@ -17,7 +17,7 @@ export default function UserProfile() {
   const { loading, error } = useGetEntryList();
 
   return (
-    <Center py={6} display={"flex"} gap={"30px"}>
+    <Center py={6} display={"flex"} gap={"30px"} flexWrap={"wrap"}>
       {loading ? (
         <Loading />
       ) : error ? (
@@ -25,7 +25,7 @@ export default function UserProfile() {
       ) : (
         <>
           <Box
-            w={"270px"}
+            w={"15rem"}
             bg={"purple.200"}
             boxShadow={"2xl"}
             rounded={"md"}
@@ -68,7 +68,7 @@ export default function UserProfile() {
             </Box>
           </Box>
           <Box
-            w={"270px"}
+            w={"15rem"}
             bg={"purple.200"}
             boxShadow={"2xl"}
             rounded={"md"}
@@ -111,7 +111,7 @@ export default function UserProfile() {
             </Box>
           </Box>
           <Box
-            w={"270px"}
+            w={"15rem"}
             bg={"purple.200"}
             boxShadow={"2xl"}
             rounded={"md"}

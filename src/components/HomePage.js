@@ -75,6 +75,7 @@ export default function HomePage() {
                 right={"-125px"}
                 top={"-15px"}
                 transform={"rotate(10deg)"}
+                padding={"0 15px"}
               >
                 Nice to meet me!
               </Text>

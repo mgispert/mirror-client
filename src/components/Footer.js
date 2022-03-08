@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Text } from "@chakra-ui/react";
+import { GiMirrorMirror } from "react-icons/gi";
 
 export default function Footer() {
   return (
@@ -8,16 +9,23 @@ export default function Footer() {
       borderTop={1}
       borderStyle={"solid"}
       borderColor={"purple.200"}
-      mt={"100px"}
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      position={"relative"}
+      left={"0"}
+      bottom={"0"}
+      right={"0"}
+      marginTop={"1rem"}
     >
+      <GiMirrorMirror />
       <Text
-        pt={6}
         fontSize={"sm"}
         textAlign={"center"}
-        padding={"15px"}
         position={"sticky"}
+        margin={"5px"}
       >
-        © 2022 MGispert. &nbsp; All rights reserved
+        2022 MGispert. &nbsp; All rights reserved
       </Text>
     </Container>
   );

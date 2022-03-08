@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useGetEntryList } from "../hooks/useGetEntryList";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import {
   Chart,
   ArcElement,
@@ -61,8 +61,18 @@ export default function Stats() {
 
   return (
     <section>
-      <EmotionsChart entries={entries} />
-      <GradesChart entries={entries} />
+      <Heading textAlign={"center"} margin={"3rem 1rem"}>
+        How have you been{" "}
+        <Text as={"span"} color={"purple.400"}>
+          feeling
+        </Text>{" "}
+        lately?
+      </Heading>
+
+      <Flex gap="40px" justifyContent={"center"} flexWrap={"wrap"}>
+        <EmotionsChart entries={entries} />
+        <GradesChart entries={entries} />
+      </Flex>
     </section>
   );
 }
@@ -93,14 +103,14 @@ const EmotionsChart = ({ entries }) => {
           label: "Emotions",
           data: Object.values(emotionsData),
           backgroundColor: [
-            "green",
-            "blue",
-            "grey",
-            "purple",
-            "pink",
-            "yellow",
-            "orange",
-            "red",
+            "#82E0AA",
+            "#85C1E9 ",
+            "#85929E ",
+            "#BB8FCE ",
+            "#F1948A",
+            "#F7DC6F ",
+            "#E59866 ",
+            "#CD6155 ",
           ],
         },
       ],
@@ -128,8 +138,8 @@ const EmotionsChart = ({ entries }) => {
   }, [entries]);
 
   return (
-    <Flex maxWidth="300px" margin="0 auto">
-      <canvas id="emotionsChart" width="200" height="200"></canvas>
+    <Flex maxWidth="300px">
+      <canvas id="emotionsChart" width="400" height="400"></canvas>
     </Flex>
   );
 };
@@ -164,14 +174,16 @@ const GradesChart = ({ entries }) => {
           label: "Grades",
           data: Object.values(gradesData),
           backgroundColor: [
-            "green",
-            "blue",
-            "grey",
-            "purple",
-            "pink",
-            "yellow",
-            "orange",
-            "red",
+            "#82E0AA",
+            "#85C1E9 ",
+            "#85929E ",
+            "#BB8FCE ",
+            "#F1948A",
+            "#F7DC6F ",
+            "#E59866 ",
+            "#CD6155 ",
+            "#ECF0F1 ",
+            "#48C9B0 ",
           ],
         },
       ],
@@ -183,6 +195,7 @@ const GradesChart = ({ entries }) => {
         responsive: true,
         plugins: {
           legend: {
+            display: false,
             position: "top",
           },
           title: {
@@ -199,8 +212,8 @@ const GradesChart = ({ entries }) => {
   }, [entries]);
 
   return (
-    <Flex maxWidth="300px" margin="0 auto">
-      <canvas id="gradeChart" width="200" height="200"></canvas>
+    <Flex maxWidth="300px">
+      <canvas id="gradeChart" width="400" height="400"></canvas>
     </Flex>
   );
 };

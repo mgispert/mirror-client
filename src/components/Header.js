@@ -15,6 +15,7 @@ import {
   MenuDivider,
   Avatar,
   Icon,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 import { GoGraph, GoListUnordered } from "react-icons/go";
@@ -23,7 +24,7 @@ import { AddIcon } from "@chakra-ui/icons";
 export default function Header() {
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const buttonSize = useBreakpointValue({ base: "xs", sm: "sm", md: "md" });
   return (
     <Container
       maxW="container.xl"
@@ -32,19 +33,24 @@ export default function Header() {
       borderColor={"purple.200"}
     >
       <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
-        <Box>
+        <Box marginRight={"1rem"}>
           <NavLink to="/">
             <Image src="/images/mirror.png" maxWidth={"50px"} />
           </NavLink>
         </Box>
 
-        <Flex gap={"20px"} alignItems="center">
+        <Flex
+          gap={"20px"}
+          alignItems="center"
+          flexWrap={"wrap"}
+          justifyContent={"center"}
+        >
           {isLoggedIn && !isLoading && (
             <>
               <Button
                 variant={"outline"}
                 colorScheme="purple"
-                size={"sm"}
+                size={buttonSize}
                 leftIcon={<Icon as={GoGraph} />}
                 onClick={() => {
                   navigate("/stats");
@@ -55,7 +61,7 @@ export default function Header() {
               <Button
                 variant={"outline"}
                 colorScheme="purple"
-                size={"sm"}
+                size={buttonSize}
                 leftIcon={<Icon as={GoListUnordered} />}
                 onClick={() => {
                   navigate("/entries");
@@ -67,7 +73,7 @@ export default function Header() {
               <Button
                 variant={"solid"}
                 colorScheme={"purple"}
-                size={"sm"}
+                size={buttonSize}
                 leftIcon={<AddIcon />}
                 onClick={() => {
                   navigate("/entries/create");
@@ -106,10 +112,14 @@ export default function Header() {
           )}
           {!isLoggedIn && !isLoading && (
             <>
-              <Button variant={"outline"} colorScheme="purple">
+              <Button
+                variant={"outline"}
+                colorScheme="purple"
+                size={buttonSize}
+              >
                 <NavLink to="/login"> Login </NavLink>
               </Button>
-              <Button colorScheme="purple">
+              <Button colorScheme="purple" size={buttonSize}>
                 <NavLink to="/signup"> Register </NavLink>
               </Button>
             </>
