@@ -117,13 +117,13 @@ export default function CreateEntry() {
                 <SliderTrack bg="purple.100">
                   <Box position="relative" right={10} />
                   <SliderFilledTrack
-                    bg="purple.500"
+                    bg="purple.400"
                     onChange={(value) => {
                       setGrade(value);
                     }}
                   />
                 </SliderTrack>
-                <SliderThumb boxSize={6} bg="purple.300" />
+                <SliderThumb boxSize={6} bg="purple.200" />
               </Slider>
             </FormControl>
 

@@ -134,9 +134,9 @@ export default function EditEntry() {
               >
                 <SliderTrack bg="purple.100">
                   <Box position="relative" right={10} />
-                  <SliderFilledTrack bg="purple.500" />
+                  <SliderFilledTrack bg="purple.400" />
                 </SliderTrack>
-                <SliderThumb boxSize={6} bg="purple.300" />
+                <SliderThumb boxSize={6} bg="purple.200" />
               </Slider>
             </FormControl>
 

@@ -31,7 +31,7 @@ export default function HomePage() {
             lineHeight={"110%"}
           >
             Get to know yourself <br />
-            <Text as={"span"} color={"purple.500"}>
+            <Text as={"span"} color={"purple.400"}>
               with Mirror
             </Text>
           </Heading>

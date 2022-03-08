@@ -94,9 +94,9 @@ export default function EntryDetails() {
                   >
                     <SliderTrack bg="purple.100">
                       <Box position="relative" right={10} />
-                      <SliderFilledTrack bg="purple.500" />
+                      <SliderFilledTrack bg="purple.400" />
                     </SliderTrack>
-                    <SliderThumb boxSize={6} bg="purple.300" />
+                    <SliderThumb boxSize={6} bg="purple.100" />
                   </Slider>
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     I'm grateful for: &nbsp; <strong>{entry.grateful}</strong>
@@ -117,7 +117,7 @@ export default function EntryDetails() {
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}
-                    color={"purple.500"}
+                    color={"purple.400"}
                     fontWeight={"500"}
                     textTransform={"uppercase"}
                     mb={"4"}
@@ -157,13 +157,13 @@ export default function EntryDetails() {
                 as={NavLink}
                 to={`/entries/${entryId}/edit`}
               >
-                Edit &nbsp; <EditIcon boxSize={"20px"} color={"purple.500"} />
+                Edit &nbsp; <EditIcon boxSize={"20px"} color={"purple.400"} />
               </Button>
               <Alert />
               {/* <Button
                 variant={"solid"}
                 size={"lg"}
-                colorScheme={"purple"}
+                colorScheme={"#9f7aea"}
                 onClick={() => deleteEntry(entry.id)}
               >
                 Delete &nbsp; <DeleteIcon boxSize={"20px"} color={"white"} />

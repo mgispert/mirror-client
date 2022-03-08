@@ -30,7 +30,7 @@ export default function UserProfile() {
             boxShadow={"2xl"}
             rounded={"md"}
             overflow={"hidden"}
-            height={"400px"}
+            height={"450px"}
           >
             <Image
               h={"120px"}
@@ -58,6 +58,7 @@ export default function UserProfile() {
                 <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
                   Mary Shelley
                 </Heading>
+                <br />
                 <Text color={"gray.500"}>
                   Mirror helped me through a really bad period of my life, I
                   could keep track of my moods, my days,and people who helped me
@@ -72,7 +73,7 @@ export default function UserProfile() {
             boxShadow={"2xl"}
             rounded={"md"}
             overflow={"hidden"}
-            height={"400px"}
+            height={"450px"}
           >
             <Image
               h={"120px"}
@@ -100,6 +101,7 @@ export default function UserProfile() {
                 <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
                   James Joyce
                 </Heading>
+                <br />
                 <Text color={"gray.500"}>
                   Mirror helped me realise that there is always more than one
                   version of the story. It was during the time I lived in Dublin
@@ -114,7 +116,7 @@ export default function UserProfile() {
             boxShadow={"2xl"}
             rounded={"md"}
             overflow={"hidden"}
-            height={"400px"}
+            height={"450px"}
           >
             <Image
               h={"120px"}
@@ -142,6 +144,7 @@ export default function UserProfile() {
                 <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
                   Oscar Wilde
                 </Heading>
+                <br />
                 <Text color={"gray.500"}>
                   Mirror helped me discover other parts of me that I had hidden
                   without even wanting to. I recommend this app for everyone who

@@ -5,8 +5,14 @@ import App from "./App";
 import { AuthProviderWrapper } from "./context/auth.context";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/montserrat/700.css";
 
 const mirrorTheme = extendTheme({
+  fonts: {
+    heading: "Montserrat, sans-serif",
+    body: "Open Sans, sans-serif",
+  },
   components: {
     Input: {
       variants: {
@@ -21,7 +27,7 @@ const mirrorTheme = extendTheme({
             borderStyle: "solid",
             borderColor: "#C4CADD",
             _focus: {
-              borderColor: "purple.300",
+              borderColor: "purple.200",
               boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
             },
           },
@@ -41,7 +47,7 @@ const mirrorTheme = extendTheme({
         },
         outline: {
           _focus: {
-            borderColor: "purple.300",
+            borderColor: "purple.200",
             boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
           },
         },

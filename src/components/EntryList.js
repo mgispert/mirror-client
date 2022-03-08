@@ -68,8 +68,8 @@ const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
         <Box zIndex="1" width="100%" position="absolute" height="100%">
           <Box
             bgGradient={useColorModeValue(
-              "radial(purple.600 1px, transparent 1px)",
-              "radial(purple.300 1px, transparent 1px)"
+              "radial(purple.500 1px, transparent 1px)",
+              "radial(purple.200 1px, transparent 1px)"
             )}
             backgroundSize="20px 20px"
             opacity="0.4"
@@ -203,7 +203,7 @@ export default function EntryList() {
               h={"55px"}
               textAlign="center"
             >
-              <InfoIcon boxSize={"50px"} color={"purple.500"} />
+              <InfoIcon boxSize={"50px"} color={"purple.400"} />
             </Flex>
           </Box>
           <Heading as="h2" size="xl" mt={6} mb={2}>
@@ -216,7 +216,7 @@ export default function EntryList() {
           <Button
             variant={"solid"}
             size={"lg"}
-            colorScheme={"purple"}
+            colorScheme={"#9f7aea"}
             as={NavLink}
             to="/entries/create"
           >

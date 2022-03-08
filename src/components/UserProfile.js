@@ -160,7 +160,7 @@ export default function EditUserProfile() {
                     }}
                   >
                     Edit &nbsp;{" "}
-                    <EditIcon boxSize={"20px"} color={"purple.500"} />
+                    <EditIcon boxSize={"20px"} color={"purple.400"} />
                   </Button>
                 </Stack>
               </Stack>
