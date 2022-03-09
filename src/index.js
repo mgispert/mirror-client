@@ -7,6 +7,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/open-sans/400.css";
 import "@fontsource/montserrat/700.css";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = {
   initialColorMode: "light",
@@ -16,12 +17,15 @@ const config = {
 const mirrorTheme = extendTheme({
   config,
   styles: {
-    global: {
+    global: (props) => ({
       "html, body, #root": {
         height: "100%",
         outerWidth: "100%",
       },
-    },
+      body: {
+        backgroundColor: mode("gray.300", "gray.600")(props),
+      },
+    }),
   },
   fonts: {
     heading: "Montserrat, sans-serif",

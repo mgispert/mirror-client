@@ -15,6 +15,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
@@ -27,9 +28,11 @@ import Alert from "./Alert";
 export default function EntryDetails() {
   const { entry, error, loading } = useGetEntry();
   const { entryId } = useParams();
+  const bg = useColorModeValue("gray.300", "gray.600");
+  const border = useColorModeValue("purple.600", "purple.200");
 
   return (
-    <Container height={"100%"}>
+    <Box as={Container} bg={bg}>
       {loading ? (
         <Loading />
       ) : error ? (
@@ -74,13 +77,7 @@ export default function EntryDetails() {
                 mh={"auto"}
               />
 
-              <Stack
-                spacing={{ base: 4, sm: 6 }}
-                direction={"column"}
-                divider={
-                  <StackDivider borderColor={("gray.200", "gray.600")} />
-                }
-              >
+              <Stack spacing={{ base: 4, sm: 6 }} direction={"column"}>
                 <VStack spacing={{ base: 4, sm: 6 }}>
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     My grade for the day:
@@ -92,7 +89,7 @@ export default function EntryDetails() {
                     step={1}
                     isDisabled
                   >
-                    <SliderTrack bg="purple.100">
+                    <SliderTrack>
                       <Box position="relative" right={10} />
                       <SliderFilledTrack bg="purple.400" />
                     </SliderTrack>
@@ -130,7 +127,7 @@ export default function EntryDetails() {
                     <strong>{entry.free}</strong>
                   </Text>
                 </VStack>{" "}
-                <hr borderColor={"purple.100"} borderWidth={"1px"} />
+                <hr borderColor={border} borderWidth={"1px"} />
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}
@@ -181,6 +178,6 @@ export default function EntryDetails() {
           </SimpleGrid>
         </>
       )}
-    </Container>
+    </Box>
   );
 }

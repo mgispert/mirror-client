@@ -146,7 +146,7 @@ export default function EntryList() {
   const isFilterEnabled = filterByTitle ? filteredEntries : entries;
 
   return (
-    <Container maxW={"7xl"} p="12" background={bg} width={"100%"}>
+    <Box as={Container} maxW={"7xl"} p="12" background={bg}>
       {loading ? (
         <Loading />
       ) : error ? (
@@ -237,6 +237,6 @@ export default function EntryList() {
           </Button>
         </Flex>
       )}
-    </Container>
+    </Box>
   );
 }
