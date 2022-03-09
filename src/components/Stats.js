@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useGetEntryList } from "../hooks/useGetEntryList";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, Container } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 import {
   Chart,
   ArcElement,
@@ -61,18 +62,52 @@ export default function Stats() {
 
   return (
     <section>
-      <Heading textAlign={"center"} margin={"3rem 1rem"}>
-        How have you been{" "}
-        <Text as={"span"} color={"purple.400"}>
-          feeling
-        </Text>{" "}
-        lately?
-      </Heading>
+      {entries > 0 ? (
+        <>
+          <Heading textAlign={"center"} margin={"3rem 1rem"}>
+            How have you been{" "}
+            <Text as={"span"} color={"purple.400"}>
+              feeling
+            </Text>{" "}
+            lately?
+          </Heading>
 
-      <Flex gap="40px" justifyContent={"center"} flexWrap={"wrap"}>
-        <EmotionsChart entries={entries} />
-        <GradesChart entries={entries} />
-      </Flex>
+          <Flex gap="40px" justifyContent={"center"} flexWrap={"wrap"}>
+            <EmotionsChart entries={entries} />
+            <GradesChart entries={entries} />
+          </Flex>
+        </>
+      ) : (
+        <Container>
+          <Flex
+            alignItems={"center"}
+            justifyContent={"center"}
+            flexDir={"column"}
+            marginBottom={"4rem "}
+          >
+            <Heading textAlign={"center"} margin={"3rem 1rem"}>
+              {" "}
+              Looks like you haven't started yet!
+              <br />
+              <br /> Get to know
+              <Text as={"span"} color={"purple.400"}>
+                {" "}
+                yourself!
+              </Text>
+            </Heading>
+            <br />
+            <Button
+              variant={"solid"}
+              size={"lg"}
+              colorScheme={"purple"}
+              as={NavLink}
+              to="/entries/create"
+            >
+              Start writing &nbsp; ✍🏽
+            </Button>
+          </Flex>
+        </Container>
+      )}
     </section>
   );
 }

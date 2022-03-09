@@ -19,12 +19,7 @@ export default function Footer() {
       marginTop={"1rem"}
     >
       <GiMirrorMirror />
-      <Text
-        fontSize={"sm"}
-        textAlign={"center"}
-        position={"sticky"}
-        margin={"5px"}
-      >
+      <Text fontSize={"sm"} textAlign={"center"} margin={"5px"}>
         2022 MGispert. &nbsp; All rights reserved
       </Text>
     </Container>

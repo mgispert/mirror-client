@@ -12,6 +12,7 @@ import {
   Text,
   Alert,
   AlertIcon,
+  useToast,
 } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 
@@ -23,6 +24,7 @@ import Error from "./Error";
 
 export default function EditUserProfile() {
   const { user } = useContext(AuthContext);
+  const toast = useToast();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -48,6 +50,11 @@ export default function EditUserProfile() {
       username,
       password,
       email,
+    });
+    toast({
+      title: "Edited profile successfully!",
+      status: "success",
+      isClosable: true,
     });
   };
 

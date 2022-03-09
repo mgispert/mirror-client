@@ -17,7 +17,13 @@ export default function UserProfile() {
   const { loading, error } = useGetEntryList();
 
   return (
-    <Center py={6} display={"flex"} gap={"30px"} flexWrap={"wrap"}>
+    <Center
+      py={6}
+      display={"flex"}
+      gap={"30px"}
+      flexWrap={"wrap"}
+      marginBottom={"3rem"}
+    >
       {loading ? (
         <Loading />
       ) : error ? (
