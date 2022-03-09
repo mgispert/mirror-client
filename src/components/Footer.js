@@ -1,24 +1,20 @@
 import React from "react";
-import { Container, Text } from "@chakra-ui/react";
+import { Container, Text, useColorModeValue } from "@chakra-ui/react";
 import { GiMirrorMirror } from "react-icons/gi";
 
 export default function Footer() {
+  const bg = useColorModeValue("gray.300", "gray.600");
   return (
     <Container
-      maxW="container.xl"
+      maxWidth={"none"}
       borderTop={1}
       borderStyle={"solid"}
       borderColor={"purple.200"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
-      position={"fixed"}
-      left={"0"}
-      bottom={"0"}
-      right={"0"}
-      zIndex={"2"}
-      backgroundColor={"#f0ece3"}
-      marginTop={"1rem"}
+      paddingTop={"1rem"}
+      backgroundColor={bg}
     >
       <GiMirrorMirror />
       <Text fontSize={"sm"} textAlign={"center"} margin={"5px"}>

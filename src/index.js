@@ -3,12 +3,26 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProviderWrapper } from "./context/auth.context";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/open-sans/400.css";
 import "@fontsource/montserrat/700.css";
 
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
+
 const mirrorTheme = extendTheme({
+  config,
+  styles: {
+    global: {
+      "html, body, #root": {
+        height: "100%",
+        outerWidth: "100%",
+      },
+    },
+  },
   fonts: {
     heading: "Montserrat, sans-serif",
     body: "Open Sans, sans-serif",
@@ -74,6 +88,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProviderWrapper>
         <ChakraProvider theme={mirrorTheme}>
+          <ColorModeScript
+            initialColorMode={mirrorTheme.config.initialColorMode}
+          />
           <App />
         </ChakraProvider>
       </AuthProviderWrapper>
@@ -81,3 +98,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+export default mirrorTheme;

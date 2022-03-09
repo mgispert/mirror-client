@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import { useGetEntryList } from "../hooks/useGetEntryList";
-import { Flex, Heading, Text, Button, Container } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Container,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import {
   Chart,
@@ -61,14 +70,14 @@ export default function Stats() {
   const { entries } = useGetEntryList();
 
   return (
-    <section>
+    <Box as="section" flex="1">
       {entries.length > 0 ? (
         <>
           <Heading textAlign={"center"} margin={"3rem 1rem"}>
             How have you been{" "}
             <Text as={"span"} color={"purple.400"}>
-              feeling
-            </Text>{" "}
+              feeling{" "}
+            </Text>
             lately?
           </Heading>
 
@@ -77,6 +86,9 @@ export default function Stats() {
             justifyContent={"center"}
             flexWrap={"wrap"}
             marginBottom={"3rem"}
+            backgroundColor={"gray.300"}
+            borderRadius={"1rem"}
+            padding={"3rem"}
           >
             <EmotionsChart entries={entries} />
             <GradesChart entries={entries} />
@@ -91,12 +103,10 @@ export default function Stats() {
             marginBottom={"4rem "}
           >
             <Heading textAlign={"center"} margin={"3rem 1rem"}>
-              {" "}
               Looks like you haven't started yet!
               <br />
               <br /> Get to know
               <Text as={"span"} color={"purple.400"}>
-                {" "}
                 yourself!
               </Text>
             </Heading>
@@ -113,7 +123,7 @@ export default function Stats() {
           </Flex>
         </Container>
       )}
-    </section>
+    </Box>
   );
 }
 
@@ -141,6 +151,7 @@ const EmotionsChart = ({ entries }) => {
       datasets: [
         {
           label: "Emotions",
+
           data: Object.values(emotionsData),
           backgroundColor: [
             "#82E0AA",

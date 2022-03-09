@@ -29,7 +29,7 @@ export default function EntryDetails() {
   const { entryId } = useParams();
 
   return (
-    <Container maxW={"7xl"}>
+    <Container height={"100%"}>
       {loading ? (
         <Loading />
       ) : error ? (
@@ -39,7 +39,7 @@ export default function EntryDetails() {
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={{ base: 8, md: 10 }}
-            py={{ base: 18, md: 24 }}
+            py={{ base: 18, md: 10 }}
             alignItems={"center"}
             display={"flex"}
             flexDirection={"column"}
@@ -129,7 +129,8 @@ export default function EntryDetails() {
                     What else can I say about the day?: &nbsp;
                     <strong>{entry.free}</strong>
                   </Text>
-                </VStack>
+                </VStack>{" "}
+                <hr borderColor={"purple.100"} borderWidth={"1px"} />
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}

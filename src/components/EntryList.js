@@ -10,6 +10,7 @@ import {
   Divider,
   HStack,
   Tag,
+  useColorMode,
   useColorModeValue,
   Container,
   Flex,
@@ -114,6 +115,9 @@ const EntryItem = ({ title, emotion, date, free, id, imageURL }) => {
 };
 
 export default function EntryList() {
+  const color = useColorModeValue("gray.500", "gray.600");
+  const border = useColorModeValue("purple.400", "purple.300");
+  const bg = useColorModeValue("gray.300", "gray.600");
   const { entries, loading, error } = useGetEntryList();
   const [filteredEntries, setFilteredEntries] = useState(entries);
   const [filterByTitle, setFilterByTitle] = useState(undefined);
@@ -142,7 +146,7 @@ export default function EntryList() {
   const isFilterEnabled = filterByTitle ? filteredEntries : entries;
 
   return (
-    <Container maxW={"7xl"} p="12">
+    <Container maxW={"7xl"} p="12" background={bg} width={"100%"}>
       {loading ? (
         <Loading />
       ) : error ? (
@@ -158,9 +162,15 @@ export default function EntryList() {
             backgroundColor={"white"}
             placeholder={"Look for your memories' titles here..."}
             display={"flex"}
-            width={"100%"}
             margin={"0 auto"}
             onChange={handleFilterByTitle}
+            _focus={{
+              zIndex: "1",
+              borderColor: border,
+              borderWidth: "3px",
+              boxShadow: `0 0 20px ${border}`,
+            }}
+            color={color}
           />
           <br />
           <Box

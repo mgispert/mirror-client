@@ -37,6 +37,9 @@ export default function CreateEntry() {
   const [free, setFree] = useState("");
   const { error, loading, addNewEntry } = useCreateEntry();
   const toast = useToast();
+  const color = useColorModeValue("gray.500", "white");
+  const border = useColorModeValue("purple.400", "purple.300");
+  const bg = useColorModeValue("gray.300", "gray.600");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +64,7 @@ export default function CreateEntry() {
     });
   };
   return (
-    <Flex align={"center"} justify={"center"} bg={"#e5d6ce"}>
+    <Flex align={"center"} justify={"center"} maxW={"9xl"} background={bg}>
       <Stack
         spacing={8}
         mx={"auto"}
@@ -72,9 +75,9 @@ export default function CreateEntry() {
       >
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Let's go
+            Let's go!
           </Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
+          <Text fontSize={"lg"} color={color}>
             Creation starts here!
           </Text>
         </Stack>
@@ -102,6 +105,12 @@ export default function CreateEntry() {
                 onChange={(e) => {
                   setDate(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="title" isRequired>
@@ -113,6 +122,12 @@ export default function CreateEntry() {
                   setTitle(e.target.value);
                 }}
                 placeholder="Give a title to your day in 5 words or less"
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="grade" isRequired>
@@ -154,6 +169,12 @@ export default function CreateEntry() {
                   setGrateful(e.target.value);
                 }}
                 placeholder="Today I'm grateful for..."
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
 
@@ -188,6 +209,12 @@ export default function CreateEntry() {
                 onChange={(e) => {
                   setPerson(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
 
@@ -201,6 +228,12 @@ export default function CreateEntry() {
                 onChange={(e) => {
                   setImprovement(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="compliment" isRequired>
@@ -210,6 +243,12 @@ export default function CreateEntry() {
                 value={compliment}
                 onChange={(e) => {
                   setCompliment(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>
@@ -221,6 +260,12 @@ export default function CreateEntry() {
                 onChange={(e) => {
                   setLookingForward(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="inspiration" isRequired>
@@ -231,6 +276,12 @@ export default function CreateEntry() {
                 onChange={(e) => {
                   setInspiration(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="need" isRequired>
@@ -240,6 +291,12 @@ export default function CreateEntry() {
                 value={need}
                 onChange={(e) => {
                   setNeed(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>
@@ -256,6 +313,12 @@ export default function CreateEntry() {
                 value={free}
                 onChange={(e) => {
                   setFree(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>

@@ -41,6 +41,10 @@ export default function EditEntry() {
   const [need, setNeed] = useState("");
   const [free, setFree] = useState("");
 
+  const bg = useColorModeValue("gray.300", "gray.600");
+  const color = useColorModeValue("gray.500", "white");
+  const border = useColorModeValue("purple.400", "purple.300");
+
   useEffect(() => {
     if (entry) {
       setDate(entry.date);
@@ -82,7 +86,7 @@ export default function EditEntry() {
   };
 
   return (
-    <Flex align={"center"} justify={"center"}>
+    <Flex align={"center"} justify={"center"} backgroundColor={bg}>
       <Stack
         spacing={8}
         mx={"auto"}
@@ -95,7 +99,7 @@ export default function EditEntry() {
           <Heading fontSize={"4xl"} textAlign={"center"}>
             Not convinced?
           </Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
+          <Text fontSize={"lg"} color={"color"}>
             Remake your own entries here!
           </Text>
         </Stack>
@@ -123,6 +127,12 @@ export default function EditEntry() {
                 onChange={(e) => {
                   setDate(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="title" isRequired>
@@ -134,6 +144,12 @@ export default function EditEntry() {
                   setTitle(e.target.value);
                 }}
                 placeholder="Give a title to your day in 5 words or less"
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="grade" isRequired>
@@ -170,6 +186,12 @@ export default function EditEntry() {
                   setGrateful(e.target.value);
                 }}
                 placeholder="Today I'm grateful for..."
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
 
@@ -205,6 +227,12 @@ export default function EditEntry() {
                 onChange={(e) => {
                   setPerson(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
 
@@ -218,6 +246,12 @@ export default function EditEntry() {
                 onChange={(e) => {
                   setImprovement(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="compliment" isRequired>
@@ -227,6 +261,12 @@ export default function EditEntry() {
                 defaultValue={compliment}
                 onChange={(e) => {
                   setCompliment(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>
@@ -238,6 +278,12 @@ export default function EditEntry() {
                 onChange={(e) => {
                   setLookingForward(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="inspiration" isRequired>
@@ -248,6 +294,12 @@ export default function EditEntry() {
                 onChange={(e) => {
                   setInspiration(e.target.value);
                 }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
+                }}
               />
             </FormControl>
             <FormControl id="need" isRequired>
@@ -257,6 +309,12 @@ export default function EditEntry() {
                 defaultValue={need}
                 onChange={(e) => {
                   setNeed(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>
@@ -273,6 +331,12 @@ export default function EditEntry() {
                 defaultValue={free}
                 onChange={(e) => {
                   setFree(e.target.value);
+                }}
+                _focus={{
+                  zIndex: "1",
+                  borderColor: border,
+                  borderWidth: "3px",
+                  boxShadow: `0 0 20px ${border}`,
                 }}
               />
             </FormControl>

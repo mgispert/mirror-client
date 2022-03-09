@@ -7,14 +7,17 @@ import {
   Flex,
   Text,
   Stack,
+  useColorModeValue,
+  Container,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { Fragment } from "react";
 import Loading from "./Loading";
 import Error from "./Error";
 import { useGetEntryList } from "../hooks/useGetEntryList";
 
-export default function UserProfile() {
+export default function Testimonials() {
   const { loading, error } = useGetEntryList();
+  const bg = useColorModeValue("gray.300", "gray.600");
 
   return (
     <Center
@@ -22,14 +25,15 @@ export default function UserProfile() {
       display={"flex"}
       gap={"30px"}
       flexWrap={"wrap"}
-      marginBottom={"3rem"}
+      paddingBottom={"3rem"}
+      backgroundColor={bg}
     >
       {loading ? (
         <Loading />
       ) : error ? (
         <Error />
       ) : (
-        <>
+        <Fragment>
           <Box
             w={"15rem"}
             bg={"purple.200"}
@@ -159,7 +163,7 @@ export default function UserProfile() {
               </Stack>
             </Box>
           </Box>
-        </>
+        </Fragment>
       )}
     </Center>
   );

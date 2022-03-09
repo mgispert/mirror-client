@@ -15,15 +15,15 @@ import {
   Avatar,
   Icon,
   useBreakpointValue,
+  useColorMode,
 } from "@chakra-ui/react";
 
 import { GoGraph, GoListUnordered } from "react-icons/go";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 import { AddIcon } from "@chakra-ui/icons";
-import useToggleTheme from "../hooks/useToggleTheme";
 
 export default function Header() {
-  const { colorTheme, toggleTheme } = useToggleTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const buttonSize = useBreakpointValue({ base: "xs", sm: "sm", md: "md" });
@@ -34,12 +34,15 @@ export default function Header() {
       borderBottom={1}
       borderStyle={"solid"}
       borderColor={"purple.200"}
-      theme={colorTheme}
     >
       <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
         <Box marginRight={"1rem"}>
           <NavLink to="/">
-            <Image src="/images/mirror.png" maxWidth={"50px"} />
+            {colorMode === "light" ? (
+              <Image src="/images/mirror.png" maxWidth={"50px"} />
+            ) : (
+              <Image src="/images/marianlogo.png" maxWidth={"50px"} />
+            )}
           </NavLink>
         </Box>
 
@@ -113,13 +116,13 @@ export default function Header() {
                 </MenuList>
               </Menu>
               <Button
-                onClick={toggleTheme}
+                onClick={toggleColorMode}
                 backgroundColor={"transparent"}
                 _active={{ backgroundColor: "transparent" }}
                 _hover={{ backgroundColor: "transparent" }}
                 _focus={{ borderColor: "none" }}
               >
-                {colorTheme === "light" ? <BsSun /> : <BsMoonFill />}
+                {colorMode === "light" ? <BsMoonFill /> : <BsSun />}
               </Button>
             </>
           )}

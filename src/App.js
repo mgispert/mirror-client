@@ -12,10 +12,14 @@ import EditEntry from "./components/EditEntry";
 import UserProfile from "./components/UserProfile";
 import Footer from "./components/Footer";
 import Stats from "./components/Stats";
+import { Flex, useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 function App() {
+  const { toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("gray.300", "gray.600");
+
   return (
-    <div style={{ backgroundColor: "#e5d6ce" }}>
+    <Flex bg={bg} flexDirection="column" height="100%">
       <Header />
 
       <Routes>
@@ -88,7 +92,7 @@ function App() {
         />
       </Routes>
       <Footer />
-    </div>
+    </Flex>
   );
 }
 

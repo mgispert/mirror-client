@@ -16,6 +16,7 @@ import {
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const color = useColorModeValue("gray.500", "white");
   return (
     <>
       <Container maxW={"3xl"}>
@@ -35,7 +36,7 @@ export default function HomePage() {
               with Mirror
             </Text>
           </Heading>
-          <Text color={"gray.500"}>
+          <Text color={color}>
             Mirror is a safe space for you to reflect and discover yourself.
             <br />
             Give yourself an opportunity to grow by getting to know you better.

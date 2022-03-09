@@ -13,6 +13,7 @@ import {
   Alert,
   AlertIcon,
   useToast,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 
@@ -25,6 +26,8 @@ import Error from "./Error";
 export default function EditUserProfile() {
   const { user } = useContext(AuthContext);
   const toast = useToast();
+  const color = useColorModeValue("gray.500", "white");
+  const border = useColorModeValue("purple.400", "purple.300");
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -82,21 +85,14 @@ export default function EditUserProfile() {
       ) : loading ? (
         <Loading />
       ) : user ? (
-        <Flex align={"center"} justify={"center"} bg={"#e5d6ce"}>
-          <Stack
-            spacing={8}
-            mx={"auto"}
-            py={12}
-            px={6}
-            width="100%"
-            maxWidth="800px"
-          >
+        <Flex align={"center"} justify={"center"}>
+          <Stack spacing={8} mx={"auto"} py={12} px={6}>
             <Stack align={"center"}>
               <Heading fontSize={"4xl"} textAlign={"center"}>
                 Welcome, {user?.username}
               </Heading>
               <br />
-              <Text fontSize={"lg"} color={"gray.600"}>
+              <Text fontSize={"lg"} color={color}>
                 You'll see the updated information once you log in again with
                 the new details!
               </Text>
@@ -116,7 +112,7 @@ export default function EditUserProfile() {
               p={8}
               as={"form"}
             >
-              <Stack spacing={4}>
+              <Stack spacing={4} color={"gray.800"}>
                 <FormControl id="username" isRequired>
                   <FormLabel>Username:</FormLabel>
                   <Input
@@ -127,6 +123,7 @@ export default function EditUserProfile() {
                     type="username"
                     name="username"
                     placeholder="Write the username here"
+                    _hover={{ borderColor: "purple.400" }}
                   />
                 </FormControl>
                 <FormControl id="email" isRequired>
@@ -139,6 +136,7 @@ export default function EditUserProfile() {
                     type="email"
                     name="email"
                     placeholder="Write the email here"
+                    _hover={{ borderColor: "purple.400" }}
                   />
                 </FormControl>
 
@@ -152,6 +150,7 @@ export default function EditUserProfile() {
                     type="password"
                     name="password"
                     placeholder="Write the password here"
+                    _hover={{ borderColor: "purple.400" }}
                   />
                 </FormControl>
 
@@ -161,10 +160,12 @@ export default function EditUserProfile() {
                     loadingText="Submitting"
                     isLoading={loading}
                     size="lg"
-                    colorScheme={"purple"}
+                    color={"purple.400"}
+                    borderColor={"purple.400"}
                     onClick={(e) => {
                       handleSubmit(e);
                     }}
+                    _hover={{ bg: "purple.200" }}
                   >
                     Edit &nbsp;{" "}
                     <EditIcon boxSize={"20px"} color={"purple.400"} />
