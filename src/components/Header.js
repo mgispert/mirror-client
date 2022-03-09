@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -19,18 +18,23 @@ import {
 } from "@chakra-ui/react";
 
 import { GoGraph, GoListUnordered } from "react-icons/go";
+import { BsSun, BsMoonFill } from "react-icons/bs";
 import { AddIcon } from "@chakra-ui/icons";
+import useToggleTheme from "../hooks/useToggleTheme";
 
 export default function Header() {
+  const { colorTheme, toggleTheme } = useToggleTheme();
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const buttonSize = useBreakpointValue({ base: "xs", sm: "sm", md: "md" });
+
   return (
     <Container
       maxW="container.xl"
       borderBottom={1}
       borderStyle={"solid"}
       borderColor={"purple.200"}
+      theme={colorTheme}
     >
       <Flex justifyContent={"space-between"} alignItems={"center"} py={"10px"}>
         <Box marginRight={"1rem"}>
@@ -108,6 +112,15 @@ export default function Header() {
                   </MenuItem>
                 </MenuList>
               </Menu>
+              <Button
+                onClick={toggleTheme}
+                backgroundColor={"transparent"}
+                _active={{ backgroundColor: "transparent" }}
+                _hover={{ backgroundColor: "transparent" }}
+                _focus={{ borderColor: "none" }}
+              >
+                {colorTheme === "light" ? <BsSun /> : <BsMoonFill />}
+              </Button>
             </>
           )}
           {!isLoggedIn && !isLoading && (

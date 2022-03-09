@@ -62,7 +62,7 @@ export default function Stats() {
 
   return (
     <section>
-      {entries > 0 ? (
+      {entries.length > 0 ? (
         <>
           <Heading textAlign={"center"} margin={"3rem 1rem"}>
             How have you been{" "}
@@ -72,7 +72,12 @@ export default function Stats() {
             lately?
           </Heading>
 
-          <Flex gap="40px" justifyContent={"center"} flexWrap={"wrap"}>
+          <Flex
+            gap="40px"
+            justifyContent={"center"}
+            flexWrap={"wrap"}
+            marginBottom={"3rem"}
+          >
             <EmotionsChart entries={entries} />
             <GradesChart entries={entries} />
           </Flex>
