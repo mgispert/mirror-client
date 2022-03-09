@@ -15,6 +15,7 @@ export default function AlertDialogExample() {
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
   const { deleteEntry } = useGetEntry();
+
   return (
     <>
       <Button colorScheme="purple" onClick={() => setIsOpen(true)}>

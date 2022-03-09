@@ -70,7 +70,7 @@ export default function EntryDetails() {
                 src={entry.imageURL}
                 fit={"cover"}
                 align={"center"}
-                mw={"100%"}
+                width={"35rem"}
                 mh={"auto"}
               />
 
@@ -108,6 +108,22 @@ export default function EntryDetails() {
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     What can I do in order to improve?: &nbsp;
                     <strong>{entry.improvement}</strong>
+                  </Text>
+                  <Text fontSize={"lg"} alignSelf={"baseline"}>
+                    What I like about myself?: &nbsp;
+                    <strong>{entry.compliment}</strong>
+                  </Text>
+                  <Text fontSize={"lg"} alignSelf={"baseline"}>
+                    I'm looking forward to...: &nbsp;
+                    <strong>{entry.lookingForward}</strong>
+                  </Text>
+                  <Text fontSize={"lg"} alignSelf={"baseline"}>
+                    What inspires me?: &nbsp;
+                    <strong>{entry.inspiration}</strong>
+                  </Text>
+                  <Text fontSize={"lg"} alignSelf={"baseline"}>
+                    What do I need right now?: &nbsp;
+                    <strong>{entry.need}</strong>
                   </Text>
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     What else can I say about the day?: &nbsp;

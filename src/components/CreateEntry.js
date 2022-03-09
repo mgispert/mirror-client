@@ -17,10 +17,9 @@ import {
   Alert,
   AlertIcon,
   Checkbox,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import Error from "../../src/components/Error";
-import Loading from "../../src/components/Loading";
 import { useCreateEntry } from "../../src/hooks/useCreateEntry";
 
 export default function CreateEntry() {
@@ -31,8 +30,13 @@ export default function CreateEntry() {
   const [emotion, setEmotion] = useState([]);
   const [person, setPerson] = useState("");
   const [improvement, setImprovement] = useState("");
+  const [compliment, setCompliment] = useState("");
+  const [lookingForward, setLookingForward] = useState("");
+  const [inspiration, setInspiration] = useState("");
+  const [need, setNeed] = useState("");
   const [free, setFree] = useState("");
   const { error, loading, addNewEntry } = useCreateEntry();
+  const toast = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,12 +48,20 @@ export default function CreateEntry() {
       emotion,
       person,
       improvement,
+      compliment,
+      lookingForward,
+      inspiration,
+      need,
       free,
+    });
+    toast({
+      title: "Created entry successfully!",
+      status: "success",
+      isClosable: true,
     });
   };
   return (
     <Flex align={"center"} justify={"center"} bg={"#e5d6ce"}>
-      {error ? <Error /> : loading ? <Loading /> : null}
       <Stack
         spacing={8}
         mx={"auto"}
@@ -123,7 +135,11 @@ export default function CreateEntry() {
                     }}
                   />
                 </SliderTrack>
-                <SliderThumb boxSize={6} bg="purple.200" />
+                <SliderThumb
+                  boxSize={6}
+                  bg="purple.200"
+                  _focus={{ boxShadow: "purple.100" }}
+                />
               </Slider>
             </FormControl>
 
@@ -187,7 +203,52 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-
+            <FormControl id="compliment" isRequired>
+              <FormLabel>What I like about myself?:</FormLabel>
+              <Input
+                type="text"
+                value={compliment}
+                onChange={(e) => {
+                  setCompliment(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="lookingForward" isRequired>
+              <FormLabel>I'm looking forward to...:</FormLabel>
+              <Input
+                type="text"
+                value={lookingForward}
+                onChange={(e) => {
+                  setLookingForward(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="inspiration" isRequired>
+              <FormLabel>What inspires me?:</FormLabel>
+              <Input
+                type="text"
+                value={inspiration}
+                onChange={(e) => {
+                  setInspiration(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="need" isRequired>
+              <FormLabel>What do I need right now?:</FormLabel>
+              <Input
+                type="text"
+                value={need}
+                onChange={(e) => {
+                  setNeed(e.target.value);
+                }}
+              />
+            </FormControl>
+            <br />
+            <Text>
+              Take five minutes for yourself and do whatever it is you need to
+              do before continuing.
+            </Text>
+            <br />
             <FormControl id="free" isRequired>
               <FormLabel>Feel free to express yourself:</FormLabel>
               <Input

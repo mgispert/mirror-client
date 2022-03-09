@@ -17,16 +17,15 @@ import {
   Alert,
   AlertIcon,
   Checkbox,
+  useToast,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import Error from "../../src/components/Error";
-import Loading from "../../src/components/Loading";
 import { useGetEntry } from "../../src/hooks/useGetEntry";
 import { useEditEntry } from "../../src/hooks/useEditEntry";
 
 export default function EditEntry() {
   const { entry } = useGetEntry();
-
+  const toast = useToast();
   const { error, loading, editEntry } = useEditEntry();
 
   const [date, setDate] = useState("");
@@ -36,6 +35,10 @@ export default function EditEntry() {
   const [emotion, setEmotion] = useState([]);
   const [person, setPerson] = useState("");
   const [improvement, setImprovement] = useState("");
+  const [compliment, setCompliment] = useState("");
+  const [lookingForward, setLookingForward] = useState("");
+  const [inspiration, setInspiration] = useState("");
+  const [need, setNeed] = useState("");
   const [free, setFree] = useState("");
 
   useEffect(() => {
@@ -47,6 +50,10 @@ export default function EditEntry() {
       setEmotion(entry.emotion);
       setPerson(entry.person);
       setImprovement(entry.improvement);
+      setCompliment(entry.compliment);
+      setLookingForward(entry.lookingForward);
+      setInspiration(entry.inspiration);
+      setNeed(entry.need);
       setFree(entry.free);
     }
   }, [entry]);
@@ -61,13 +68,21 @@ export default function EditEntry() {
       emotion,
       person,
       improvement,
+      compliment,
+      lookingForward,
+      inspiration,
+      need,
       free,
+    });
+    toast({
+      title: "Edited entry successfully!",
+      status: "success",
+      isClosable: true,
     });
   };
 
   return (
     <Flex align={"center"} justify={"center"}>
-      {error ? <Error /> : loading ? <Loading /> : null}
       <Stack
         spacing={8}
         mx={"auto"}
@@ -136,7 +151,11 @@ export default function EditEntry() {
                   <Box position="relative" right={10} />
                   <SliderFilledTrack bg="purple.400" />
                 </SliderTrack>
-                <SliderThumb boxSize={6} bg="purple.200" />
+                <SliderThumb
+                  boxSize={6}
+                  bg="purple.200"
+                  _focus={{ boxShadow: "purple.100" }}
+                />
               </Slider>
             </FormControl>
 
@@ -201,7 +220,52 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-
+            <FormControl id="compliment" isRequired>
+              <FormLabel>What I like about myself?:</FormLabel>
+              <Input
+                type="text"
+                defaultValue={compliment}
+                onChange={(e) => {
+                  setCompliment(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="lookingForward" isRequired>
+              <FormLabel>I'm looking forward to...:</FormLabel>
+              <Input
+                type="text"
+                defaultValue={lookingForward}
+                onChange={(e) => {
+                  setLookingForward(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="inspiration" isRequired>
+              <FormLabel>What inspires me?:</FormLabel>
+              <Input
+                type="text"
+                defaultValue={inspiration}
+                onChange={(e) => {
+                  setInspiration(e.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl id="need" isRequired>
+              <FormLabel>What do I need right now?:</FormLabel>
+              <Input
+                type="text"
+                defaultValue={need}
+                onChange={(e) => {
+                  setNeed(e.target.value);
+                }}
+              />
+            </FormControl>
+            <br />
+            <Text>
+              Take five minutes for yourself and do whatever it is you need to
+              do before continuing.
+            </Text>
+            <br />
             <FormControl id="free" isRequired>
               <FormLabel>Feel free to express yourself:</FormLabel>
               <Input

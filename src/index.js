@@ -14,6 +14,16 @@ const mirrorTheme = extendTheme({
     body: "Open Sans, sans-serif",
   },
   components: {
+    Checkbox: {
+      variants: {
+        outline: {
+          _focus: {
+            borderColor: "purple.200",
+            boxShadow: "0 0 0 3px var(--chakra-colors-purple-100)",
+          },
+        },
+      },
+    },
     Input: {
       variants: {
         outline: {
