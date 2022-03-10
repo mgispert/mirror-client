@@ -82,7 +82,7 @@ export default function Stats() {
           </Heading>
 
           <Flex
-            gap="50px"
+            gap="6rem"
             justifyContent={"center"}
             flexWrap={"wrap"}
             marginBottom={"3rem"}
@@ -175,10 +175,6 @@ const EmotionsChart = ({ entries }) => {
           legend: {
             position: "left",
           },
-          title: {
-            display: true,
-            text: "Emotions",
-          },
         },
       },
     };
@@ -259,9 +255,53 @@ const GradesChart = ({ entries }) => {
             display: false,
             position: "top",
           },
-          title: {
+        },
+        scales: {
+          x: {
             display: true,
-            text: "Grades",
+            title: {
+              display: true,
+              text: "Grade chosen",
+              color: "rgb(159 122 234)",
+              font: {
+                family: "Montserrat",
+                size: 20,
+                weight: "normal",
+                lineHeight: 1.2,
+              },
+              padding: { top: 10, left: 0, right: 0, bottom: 0 },
+            },
+            ticks: {
+              // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+              callback: function (val, index) {
+                // Hide every 2nd tick label
+                return index % 2 === 0 ? this.getLabelForValue(val) : "";
+              },
+              color: "rgb(159 122 234)",
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "Times chosen",
+              color: "rgb(159 122 234)",
+              font: {
+                family: "Montserrat",
+                size: 20,
+                style: "normal",
+                lineHeight: 1.2,
+              },
+              padding: { top: 0, left: 0, right: 0, bottom: 10 },
+            },
+            ticks: {
+              // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+              callback: function (val, index) {
+                // Hide every 2nd tick label
+                return index % 2 === 0 ? this.getLabelForValue(val) : "";
+              },
+              color: "rgb(159 122 234)",
+            },
           },
         },
       },
