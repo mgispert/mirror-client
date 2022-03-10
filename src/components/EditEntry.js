@@ -8,6 +8,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  SliderMark,
   Stack,
   Button,
   Heading,
@@ -28,7 +29,6 @@ export default function EditEntry() {
   const toast = useToast();
   const { error, loading, editEntry } = useEditEntry();
 
-  const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(0);
   const [grateful, setGrateful] = useState("");
@@ -47,7 +47,6 @@ export default function EditEntry() {
 
   useEffect(() => {
     if (entry) {
-      setDate(entry.date);
       setTitle(entry.title);
       setGrade(entry.grade);
       setGrateful(entry.grateful);
@@ -61,6 +60,11 @@ export default function EditEntry() {
       setFree(entry.free);
     }
   }, [entry]);
+
+  let today = new Date();
+
+  let date =
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -119,14 +123,12 @@ export default function EditEntry() {
           as={"form"}
         >
           <Stack spacing={4}>
-            <FormControl id="data" isRequired>
+            <FormControl id="data">
               <FormLabel>Date:</FormLabel>
               <Input
                 type="text"
                 defaultValue={date}
-                onChange={(e) => {
-                  setDate(e.target.value);
-                }}
+                isDisabled
                 _focus={{
                   zIndex: "1",
                   borderColor: border,
@@ -135,7 +137,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="title" isRequired>
+            <FormControl id="title">
               <FormLabel>Title:</FormLabel>
               <Input
                 type="text"
@@ -152,7 +154,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="grade" isRequired>
+            <FormControl id="grade">
               <FormLabel>How would you grade your day from 1-10?:</FormLabel>
               <Slider
                 value={grade}
@@ -163,6 +165,18 @@ export default function EditEntry() {
                   setGrade(value);
                 }}
               >
+                <SliderMark
+                  value={grade}
+                  textAlign="center"
+                  bg="purple.300"
+                  color="white"
+                  mt="-10"
+                  ml="-5"
+                  w="2rem"
+                  borderRadius={"50%"}
+                >
+                  {grade}
+                </SliderMark>
                 <SliderTrack bg="purple.100">
                   <Box position="relative" right={10} />
                   <SliderFilledTrack bg="purple.400" />
@@ -175,7 +189,7 @@ export default function EditEntry() {
               </Slider>
             </FormControl>
 
-            <FormControl id="grateful" isRequired>
+            <FormControl id="grateful">
               <FormLabel>
                 Name at least one thing you're grateful for:
               </FormLabel>
@@ -195,7 +209,7 @@ export default function EditEntry() {
               />
             </FormControl>
 
-            <FormControl id="emotion" isRequired>
+            <FormControl id="emotion">
               <FormLabel>Which emotion do you identify with today?:</FormLabel>
               <CheckboxGroup
                 value={emotion}
@@ -217,7 +231,7 @@ export default function EditEntry() {
               </CheckboxGroup>
             </FormControl>
 
-            <FormControl id="person" isRequired>
+            <FormControl id="person">
               <FormLabel>
                 Name at least one person who helped make your day better:{" "}
               </FormLabel>
@@ -236,7 +250,7 @@ export default function EditEntry() {
               />
             </FormControl>
 
-            <FormControl id="improvement" isRequired>
+            <FormControl id="improvement">
               <FormLabel>
                 What can I do to improve or make my day better?:
               </FormLabel>
@@ -254,7 +268,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="compliment" isRequired>
+            <FormControl id="compliment">
               <FormLabel>What I like about myself?:</FormLabel>
               <Input
                 type="text"
@@ -270,7 +284,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="lookingForward" isRequired>
+            <FormControl id="lookingForward">
               <FormLabel>I'm looking forward to...:</FormLabel>
               <Input
                 type="text"
@@ -286,7 +300,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="inspiration" isRequired>
+            <FormControl id="inspiration">
               <FormLabel>What inspires me?:</FormLabel>
               <Input
                 type="text"
@@ -302,7 +316,7 @@ export default function EditEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="need" isRequired>
+            <FormControl id="need">
               <FormLabel>What do I need right now?:</FormLabel>
               <Input
                 type="text"
@@ -324,7 +338,7 @@ export default function EditEntry() {
               do before continuing.
             </Text>
             <br />
-            <FormControl id="free" isRequired>
+            <FormControl id="free">
               <FormLabel>Feel free to express yourself:</FormLabel>
               <Input
                 type="text"

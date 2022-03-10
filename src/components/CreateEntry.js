@@ -8,6 +8,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  SliderMark,
   Stack,
   Button,
   Heading,
@@ -23,7 +24,6 @@ import { useState } from "react";
 import { useCreateEntry } from "../../src/hooks/useCreateEntry";
 
 export default function CreateEntry() {
-  const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(0);
   const [grateful, setGrateful] = useState("");
@@ -41,8 +41,14 @@ export default function CreateEntry() {
   const border = useColorModeValue("purple.400", "purple.300");
   const bg = useColorModeValue("gray.300", "gray.600");
 
+  let today = new Date();
+
+  let date =
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     addNewEntry({
       date,
       title,
@@ -97,14 +103,13 @@ export default function CreateEntry() {
           as={"form"}
         >
           <Stack spacing={4}>
-            <FormControl id="data" isRequired>
+            <FormControl id="date">
               <FormLabel>Date:</FormLabel>
+
               <Input
+                isDisabled
                 type="text"
                 value={date}
-                onChange={(e) => {
-                  setDate(e.target.value);
-                }}
                 _focus={{
                   zIndex: "1",
                   borderColor: border,
@@ -113,7 +118,7 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="title" isRequired>
+            <FormControl id="title">
               <FormLabel>Title:</FormLabel>
               <Input
                 type="text"
@@ -130,17 +135,30 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="grade" isRequired>
+            <FormControl id="grade">
               <FormLabel>How would you grade your day from 1-10?:</FormLabel>
+              <br />
               <Slider
-                value={grade}
+                defaultValue={5}
                 min={0}
                 max={10}
                 step={1}
-                onChange={(value) => {
-                  setGrade(value);
+                onChange={(defaultValue) => {
+                  setGrade(defaultValue);
                 }}
               >
+                <SliderMark
+                  value={grade}
+                  textAlign="center"
+                  bg="purple.300"
+                  color="white"
+                  mt="-10"
+                  ml="-5"
+                  w="2rem"
+                  borderRadius={"50%"}
+                >
+                  {grade}
+                </SliderMark>
                 <SliderTrack bg="purple.100">
                   <Box position="relative" right={10} />
                   <SliderFilledTrack
@@ -158,7 +176,7 @@ export default function CreateEntry() {
               </Slider>
             </FormControl>
 
-            <FormControl id="grateful" isRequired>
+            <FormControl id="grateful">
               <FormLabel>
                 Name at least one thing you're grateful for:
               </FormLabel>
@@ -178,7 +196,7 @@ export default function CreateEntry() {
               />
             </FormControl>
 
-            <FormControl id="emotion" isRequired>
+            <FormControl id="emotion">
               <FormLabel>Which emotion do you identify with today?:</FormLabel>
               <CheckboxGroup
                 colorScheme="purple"
@@ -199,7 +217,7 @@ export default function CreateEntry() {
               </CheckboxGroup>
             </FormControl>
 
-            <FormControl id="person" isRequired>
+            <FormControl id="person">
               <FormLabel>
                 Name at least one person who helped make your day better:{" "}
               </FormLabel>
@@ -218,7 +236,7 @@ export default function CreateEntry() {
               />
             </FormControl>
 
-            <FormControl id="improvement" isRequired>
+            <FormControl id="improvement">
               <FormLabel>
                 What can I do to improve or make my day better?:
               </FormLabel>
@@ -236,7 +254,7 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="compliment" isRequired>
+            <FormControl id="compliment">
               <FormLabel>What I like about myself?:</FormLabel>
               <Input
                 type="text"
@@ -252,7 +270,7 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="lookingForward" isRequired>
+            <FormControl id="lookingForward">
               <FormLabel>I'm looking forward to...:</FormLabel>
               <Input
                 type="text"
@@ -268,7 +286,7 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="inspiration" isRequired>
+            <FormControl id="inspiration">
               <FormLabel>What inspires me?:</FormLabel>
               <Input
                 type="text"
@@ -284,7 +302,7 @@ export default function CreateEntry() {
                 }}
               />
             </FormControl>
-            <FormControl id="need" isRequired>
+            <FormControl id="need">
               <FormLabel>What do I need right now?:</FormLabel>
               <Input
                 type="text"
@@ -306,7 +324,7 @@ export default function CreateEntry() {
               do before continuing.
             </Text>
             <br />
-            <FormControl id="free" isRequired>
+            <FormControl id="free">
               <FormLabel>Feel free to express yourself:</FormLabel>
               <Input
                 type="text"

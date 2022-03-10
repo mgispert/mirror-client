@@ -8,13 +8,12 @@ import {
   Button,
   Heading,
   SimpleGrid,
-  StackDivider,
   Tag,
   List,
   Slider,
   SliderTrack,
   SliderFilledTrack,
-  SliderThumb,
+  SliderMark,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
@@ -29,7 +28,6 @@ export default function EntryDetails() {
   const { entry, error, loading } = useGetEntry();
   const { entryId } = useParams();
   const bg = useColorModeValue("gray.300", "gray.600");
-  const border = useColorModeValue("purple.600", "purple.200");
 
   return (
     <Box as={Container} bg={bg}>
@@ -63,7 +61,7 @@ export default function EntryDetails() {
                   fontSize={"2xl"}
                   mt={"20px"}
                 >
-                  {entry.date}
+                  {entry?.date && new Date(entry.date).toLocaleDateString()}
                 </Text>
               </Box>
 
@@ -82,6 +80,7 @@ export default function EntryDetails() {
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     My grade for the day:
                   </Text>
+                  <br />
                   <Slider
                     value={entry.grade}
                     min={0}
@@ -89,11 +88,33 @@ export default function EntryDetails() {
                     step={1}
                     isDisabled
                   >
+                    <SliderMark value={0} mt="1" ml="-2.5" fontSize="sm">
+                      0
+                    </SliderMark>
+                    <SliderMark value={5} mt="1" ml="-2.5" fontSize="sm">
+                      5
+                    </SliderMark>
+                    <SliderMark value={10} mt="1" ml="-2.5" fontSize="sm">
+                      10
+                    </SliderMark>
+                    <SliderMark
+                      value={entry.grade}
+                      textAlign="center"
+                      bg="purple.300"
+                      color="white"
+                      mt="-10"
+                      ml="-5"
+                      w="2rem"
+                      borderRadius={"50%"}
+                    >
+                      {entry.grade}
+                    </SliderMark>
                     <SliderTrack>
                       <Box position="relative" right={10} />
                       <SliderFilledTrack bg="purple.400" />
                     </SliderTrack>
                   </Slider>
+                  <br />
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     I'm grateful for: &nbsp; <strong>{entry.grateful}</strong>
                   </Text>
@@ -126,7 +147,7 @@ export default function EntryDetails() {
                     <strong>{entry.free}</strong>
                   </Text>
                 </VStack>{" "}
-                <hr borderColor={border} borderWidth={"1px"} />
+                <hr borderWidth={"1px"} />
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}

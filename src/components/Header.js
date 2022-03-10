@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import Player, { useAudio } from "../hooks/useAudio";
+import Player from "../hooks/useAudio";
 
 import {
   Box,
@@ -18,19 +18,14 @@ import {
   Icon,
   useBreakpointValue,
   useColorMode,
-  useColorModeValue,
 } from "@chakra-ui/react";
-// import { MdOutlineMusicNote, MdOutlineMusicOff } from "react-icons/md";
 import { GoGraph, GoListUnordered } from "react-icons/go";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 import { AddIcon } from "@chakra-ui/icons";
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
-  // const { playing, toggleAudio } = useAudio(
-  //   "/public/6 Hour Relaxing Piano Musicmp3.mp3"
-  // );
-  const bg = useColorModeValue("gray.300", "gray.600");
+
   const { isLoggedIn, user, logOutUser, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const buttonSize = useBreakpointValue({ base: "xs", sm: "sm", md: "md" });
