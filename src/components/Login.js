@@ -26,6 +26,10 @@ function Login(props) {
   const [showPassword, setShowPassword] = useState(false);
   const { error, loading, login } = useLogin();
 
+  const bg = useColorModeValue("gray.300", "gray.600");
+  const color = useColorModeValue("gray.600", "white");
+  const icon = useColorModeValue("gray.600", "gray.600");
+
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
@@ -39,13 +43,13 @@ function Login(props) {
   };
 
   return (
-    <Flex align={"center"} justify={"center"} bg={"#F0ECE3"}>
+    <Flex align={"center"} justify={"center"} bg={bg} height={"100%"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
             Log In
           </Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
+          <Text fontSize={"lg"} color={color}>
             Welcome to your own reflection! 📜
           </Text>
         </Stack>
@@ -84,7 +88,11 @@ function Login(props) {
                       setShowPassword((showPassword) => !showPassword)
                     }
                   >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    {showPassword ? (
+                      <ViewIcon color={icon} />
+                    ) : (
+                      <ViewOffIcon color={icon} />
+                    )}
                   </Button>
                 </InputRightElement>
               </InputGroup>

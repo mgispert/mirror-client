@@ -138,6 +138,15 @@ export default function Header() {
               <Button colorScheme="purple" size={buttonSize}>
                 <NavLink to="/signup"> Register </NavLink>
               </Button>
+              <Button
+                onClick={toggleColorMode}
+                backgroundColor={"transparent"}
+                _active={{ backgroundColor: "transparent" }}
+                _hover={{ backgroundColor: "transparent" }}
+                _focus={{ borderColor: "none" }}
+              >
+                {colorMode === "light" ? <BsMoonFill /> : <BsSun />}
+              </Button>
             </>
           )}
         </Flex>
