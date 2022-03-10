@@ -148,10 +148,10 @@ const EmotionsChart = ({ entries }) => {
     const ctx = document.getElementById("emotionsChart");
     const data = {
       labels: Object.keys(emotionsData),
+
       datasets: [
         {
           label: "Emotions",
-
           data: Object.values(emotionsData),
           backgroundColor: [
             "#82E0AA",
@@ -174,6 +174,15 @@ const EmotionsChart = ({ entries }) => {
         plugins: {
           legend: {
             position: "left",
+            labels: {
+              color: "rgb(159 122 234)",
+              font: {
+                family: "Montserrat",
+                size: 12,
+                weight: "normal",
+                lineHeight: 1.2,
+              },
+            },
           },
         },
       },
@@ -213,22 +222,13 @@ const GradesChart = ({ entries }) => {
     return count;
   };
 
-  const getTitles = () => {
-    entries.forEach((entry) => {
-      titles.push(entry.title);
-    });
-    return titles;
-  };
-
   useEffect(() => {
     const gradesData = getStats();
-    const titlesData = getTitles();
     const ctx = document.getElementById("gradeChart");
     const data = {
       labels: Object.keys(gradesData),
       datasets: [
         {
-          label: Object.values(titlesData),
           data: Object.values(gradesData),
           backgroundColor: [
             "#82E0AA",
@@ -272,9 +272,7 @@ const GradesChart = ({ entries }) => {
               padding: { top: 10, left: 0, right: 0, bottom: 0 },
             },
             ticks: {
-              // For a category axis, the val is the index so the lookup via getLabelForValue is needed
               callback: function (val, index) {
-                // Hide every 2nd tick label
                 return index % 2 === 0 ? this.getLabelForValue(val) : "";
               },
               color: "rgb(159 122 234)",
