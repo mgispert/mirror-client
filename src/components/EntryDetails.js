@@ -93,7 +93,6 @@ export default function EntryDetails() {
                       <Box position="relative" right={10} />
                       <SliderFilledTrack bg="purple.400" />
                     </SliderTrack>
-                    <SliderThumb boxSize={6} bg="purple.100" />
                   </Slider>
                   <Text fontSize={"lg"} alignSelf={"baseline"}>
                     I'm grateful for: &nbsp; <strong>{entry.grateful}</strong>
@@ -143,6 +142,7 @@ export default function EntryDetails() {
                     <List
                       style={{
                         display: "flex",
+                        flexWrap: "wrap",
                         gap: "20px",
                         alignItems: "center",
                       }}
@@ -150,10 +150,10 @@ export default function EntryDetails() {
                       {entry.emotion?.map((emotion, index) => {
                         return (
                           <Tag
-                            size={"md"}
                             variant="outline"
                             colorScheme="purple"
                             key={index}
+                            minWidth={"fitContent"}
                           >
                             {emotion}
                           </Tag>

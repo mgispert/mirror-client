@@ -91,11 +91,6 @@ export default function EditUserProfile() {
               <Heading fontSize={"4xl"} textAlign={"center"}>
                 Welcome, {user?.username}
               </Heading>
-              <br />
-              <Text fontSize={"lg"} color={color}>
-                You'll see the updated information once you log in again with
-                the new details!
-              </Text>
             </Stack>
             {error && (
               <Alert status="error">
