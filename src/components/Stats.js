@@ -210,19 +210,29 @@ const GradesChart = ({ entries }) => {
     10: 0,
   };
 
+  const titles = [];
+
   const getStats = () => {
     entries.forEach((entry) => (count[entry.grade] += 1));
     return count;
   };
 
+  const getTitles = () => {
+    entries.forEach((entry) => {
+      titles.push(entry.title);
+    });
+    return titles;
+  };
+
   useEffect(() => {
     const gradesData = getStats();
+    const titlesData = getTitles();
     const ctx = document.getElementById("gradeChart");
     const data = {
       labels: Object.keys(gradesData),
       datasets: [
         {
-          label: "Grades",
+          label: Object.values(titlesData),
           data: Object.values(gradesData),
           backgroundColor: [
             "#82E0AA",
