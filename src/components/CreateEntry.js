@@ -255,7 +255,7 @@ export default function CreateEntry() {
               />
             </FormControl>
             <FormControl id="compliment">
-              <FormLabel>What I like about myself?:</FormLabel>
+              <FormLabel>What do I like about myself?:</FormLabel>
               <Input
                 type="text"
                 value={compliment}

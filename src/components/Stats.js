@@ -82,7 +82,7 @@ export default function Stats() {
           </Heading>
 
           <Flex
-            gap="40px"
+            gap="50px"
             justifyContent={"center"}
             flexWrap={"wrap"}
             marginBottom={"3rem"}
@@ -173,7 +173,7 @@ const EmotionsChart = ({ entries }) => {
         responsive: true,
         plugins: {
           legend: {
-            position: "top",
+            position: "left",
           },
           title: {
             display: true,
